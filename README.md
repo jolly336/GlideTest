@@ -1,2 +1,2 @@
 # GlideTest
-Just a simple test for Glide
+A simple test just for Glide
