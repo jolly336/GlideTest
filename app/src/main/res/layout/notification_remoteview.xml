@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:background="@android:color/white"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:padding="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <ImageView
+                android:id="@+id/iv_notification_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="2dp"
+                android:background="@mipmap/ic_launcher"
+                android:layout_weight="0"
+                android:scaleType="centerCrop"
+        />
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/tv_notification_headline"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textSize="12dp"
+                    tools:text="标题"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    android:id="@+id/tv_notification_short_msg"
+                    tools:text="内容"
+                    android:ellipsize="end"
+                    android:paddingBottom="2dp"
+                    android:singleLine="true"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <ProgressBar
+                    android:id="@+id/progressbar"
+                    style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
