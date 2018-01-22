@@ -292,6 +292,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_notification_target:
                 jump2Act(NotificationTargetActivity.class);
                 break;
+            case R.id.action_load_progress:
+                jump2Act(LoadProgressActivity.class);
+                break;
         }
         return true;
     }

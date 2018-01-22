@@ -1,7 +1,6 @@
 package com.zihuatanejo.glidetest;
 
 import android.content.Context;
-import com.bumptech.glide.integration.okhttp3.OkHttpStreamFetcher;
 import com.bumptech.glide.load.data.DataFetcher;
 import com.bumptech.glide.load.model.GenericLoaderFactory;
 import com.bumptech.glide.load.model.GlideUrl;
