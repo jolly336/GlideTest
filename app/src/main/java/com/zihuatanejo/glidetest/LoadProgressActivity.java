@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
@@ -28,6 +30,8 @@ import com.zihuatanejo.glidetest.okhttp.ProgressListener;
 
 public class LoadProgressActivity extends AppCompatActivity {
 
+    private static final String TAG = "LoadProgressActivity";
+
     private static final String URL = "http://omdtn071e.bkt.clouddn.com/anthony-intraversato-257182.jpg";
 
     private ActivityLoadProgressBinding mBinding;
@@ -40,6 +44,37 @@ public class LoadProgressActivity extends AppCompatActivity {
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         mProgressDialog.setMessage("loading...");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mBinding.ivImage.post(new Runnable() {
+            @Override
+            public void run() {
+                Log.e(TAG, "onStart: width: " + mBinding.ivImage.getWidth() + ", height: "
+                        + mBinding.ivImage.getHeight());
+            }
+        });
+
+        ViewTreeObserver observer = mBinding.ivImage.getViewTreeObserver();
+        observer.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                mBinding.ivImage.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                Log.e(TAG, "ViewTreeObserver: width: " + mBinding.ivImage.getWidth() + ", height: "
+                        + mBinding.ivImage.getHeight());
+            }
+        });
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            Log.e(TAG, "onWindowFocusChanged: width: " + mBinding.ivImage.getWidth() + ", height: "
+                    + mBinding.ivImage.getHeight());
+        }
     }
 
     public void loadImage(View view) {
