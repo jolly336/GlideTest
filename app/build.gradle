@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.antfortune.freeline'
+apply plugin: 'checkstyle'
 
 android {
     compileSdkVersion 24
@@ -16,6 +17,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 
     dataBinding {
@@ -45,4 +50,14 @@ dependencies {
 //    compile 'com.github.bumptech.glide:volley-integration:1.4.0@aar'
 //    compile 'com.mcxiaoke.volley:library:1.0.8'
 
+}
+
+task checkstyle(type: Checkstyle) {
+    description 'Runs Checkstyle inspection against matisse sourcesets.'
+    group = 'Code Quality'
+    configFile rootProject.file('checkstyle.xml')
+    ignoreFailures = false
+    showViolations true
+    classpath = files()
+    source 'src/main/java'
 }
