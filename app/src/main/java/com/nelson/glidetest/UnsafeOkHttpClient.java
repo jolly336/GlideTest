@@ -1,4 +1,4 @@
-package com.zihuatanejo.glidetest;
+package com.nelson.glidetest;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Protocol;

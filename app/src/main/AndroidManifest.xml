@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.zihuatanejo.glidetest">
+  package="com.nelson.glidetest">
 
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -14,7 +14,7 @@
     android:theme="@style/AppTheme">
 
     <meta-data
-      android:name="com.zihuatanejo.glidetest.SimpleGlideModule"
+      android:name="com.nelson.glidetest.SimpleGlideModule"
       android:value="GlideModule"/>
     <!--  <meta-data
               android:name="com.zihuatanejo.glidetest.UnsafeOkHttpGlideModule"
@@ -24,15 +24,15 @@
              android:value="GlideModule"/>-->
 
     <meta-data
-      android:name="com.zihuatanejo.glidetest.CustomImageSizeGlideModule"
+      android:name="com.nelson.glidetest.CustomImageSizeGlideModule"
       android:value="GlideModule"/>
 
     <meta-data
-      android:name="com.zihuatanejo.glidetest.okhttp.OkHttpGlideModule"
+      android:name="com.nelson.glidetest.okhttp.OkHttpGlideModule"
       android:value="GlideModule"/>
 
 
-    <activity android:name=".MainActivity">
+    <activity android:name="com.nelson.glidetest.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -40,9 +40,9 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".ImageListActivity"/>
-    <activity android:name=".NotificationTargetActivity"/>
-    <activity android:name=".LoadProgressActivity"/>
+    <activity android:name="com.nelson.glidetest.ImageListActivity"/>
+    <activity android:name="com.nelson.glidetest.NotificationTargetActivity"/>
+    <activity android:name="com.nelson.glidetest.LoadProgressActivity"/>
   </application>
 
 </manifest>

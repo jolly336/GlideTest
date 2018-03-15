@@ -1,4 +1,4 @@
-package com.zihuatanejo.glidetest.okhttp;
+package com.nelson.glidetest.okhttp;
 
 /**
  * Created by Nelson on 2018/1/22.

@@ -1,7 +1,7 @@
-package com.zihuatanejo.glidetest.okhttp;
+package com.nelson.glidetest.okhttp;
 
+import android.support.annotation.Nullable;
 import android.util.Log;
-import com.android.annotations.Nullable;
 import java.io.IOException;
 import okhttp3.MediaType;
 import okhttp3.ResponseBody;
@@ -9,7 +9,6 @@ import okio.Buffer;
 import okio.BufferedSource;
 import okio.ForwardingSource;
 import okio.Okio;
-import okio.Sink;
 import okio.Source;
 
 /**

@@ -1,8 +1,7 @@
-package com.zihuatanejo.glidetest;
+package com.nelson.glidetest;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.hardware.camera2.CameraManager;
 import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;

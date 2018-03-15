@@ -1,4 +1,4 @@
-package com.zihuatanejo.glidetest;
+package com.nelson.glidetest;
 
 import android.app.ProgressDialog;
 import android.databinding.DataBindingUtil;
@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.bumptech.glide.Glide;
@@ -16,11 +15,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
-import com.bumptech.glide.request.target.Target;
-import com.bumptech.glide.request.target.ViewTarget;
-import com.zihuatanejo.glidetest.databinding.ActivityLoadProgressBinding;
-import com.zihuatanejo.glidetest.okhttp.ProgressInterceptor;
-import com.zihuatanejo.glidetest.okhttp.ProgressListener;
+import com.nelson.glidetest.databinding.ActivityLoadProgressBinding;
+import com.nelson.glidetest.okhttp.ProgressInterceptor;
+import com.nelson.glidetest.okhttp.ProgressListener;
 
 /**
  * Load image with {@link ProgressDialog}

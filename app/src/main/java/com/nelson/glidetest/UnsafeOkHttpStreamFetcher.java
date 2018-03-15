@@ -1,6 +1,5 @@
-package com.zihuatanejo.glidetest;
+package com.nelson.glidetest;
 
-import android.support.v4.view.ViewCompat;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.data.DataFetcher;
 import com.bumptech.glide.load.model.GlideUrl;

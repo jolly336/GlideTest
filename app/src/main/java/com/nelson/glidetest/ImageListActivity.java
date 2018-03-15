@@ -1,4 +1,4 @@
-package com.zihuatanejo.glidetest;
+package com.nelson.glidetest;
 
 import android.app.Activity;
 import android.os.Bundle;
