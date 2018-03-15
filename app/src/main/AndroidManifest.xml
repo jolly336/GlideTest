@@ -40,6 +40,14 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".GlideTestActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.glidetest"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
     <activity android:name="com.nelson.glidetest.ImageListActivity"/>
     <activity android:name="com.nelson.glidetest.NotificationTargetActivity"/>
     <activity android:name="com.nelson.glidetest.LoadProgressActivity"/>
