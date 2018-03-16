@@ -22,7 +22,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Bindin
     private static final String ACTION_PRE = "com.nelson.glidetest.";
 
     private String[] mType = new String[]{
-            "glidetest"
+            "glidetest",
+            "simpleusing"
     };
 
     private List<RecyclerItem> mRecyclerItemList = new ArrayList<>();

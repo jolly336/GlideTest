@@ -87,8 +87,8 @@ public class LoadProgressActivity extends AppCompatActivity {
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .dontTransform()
                 //.override(ViewTarget.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
-                .placeholder(R.mipmap.ic_launcher)
-                .error(R.mipmap.net_error_img)
+                .placeholder(R.drawable.ic_launcher)
+                .error(R.drawable.net_error_img)
                 //into(mBinding.ivImage);
                 .into(new GlideDrawableImageViewTarget(mBinding.ivImage) {
                     @Override

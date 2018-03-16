@@ -37,12 +37,6 @@ public class GlideTestActivity extends AppCompatActivity {
         lowImageView_1 = (ImageView) findViewById(R.id.iv_low_1);
         lowImageView_2 = (ImageView) findViewById(R.id.iv_low_2);
 
-        //------1、internet url--------------
-//        String internetUrl = "http://i.imgur.com/DvpvklR.png";
-//        Glide.with(this)
-//                .load(internetUrl)
-//                .placeholder(R.mipmap.ic_launcher)
-//                .into(targetImageView);
 
         //-----2、load from res id--------------
 //        int resourceId = R.mipmap.ic_launcher;
