@@ -24,7 +24,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Bindin
     private String[] mType = new String[]{
             "glidetest",
             "simpleusing",
-            "imagelist"
+            "imagelist",
+            "crossfade",
+            "resize",
     };
 
     private List<RecyclerItem> mRecyclerItemList = new ArrayList<>();

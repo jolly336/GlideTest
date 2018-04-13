@@ -39,46 +39,6 @@ public class GlideTestActivity extends AppCompatActivity {
         lowImageView_2 = (ImageView) findViewById(R.id.iv_low_2);
 
 
-        //-----2、load from res id--------------
-//        int resourceId = R.mipmap.ic_launcher;
-//        Glide.with(this)
-//                .load(resourceId)
-//                .into(targetImageView);
-
-        //-----3、load from file-------------- no effect!!!
-//        File file = new File(Environment.getExternalStorageDirectory(), "green.jpg");
-//        Log.e("glie", "file_: " + file.getAbsolutePath());
-//        Glide.with(this)
-//                .load(file)
-//                .placeholder(R.mipmap.ic_launcher) // can also be a drawable
-//                .error(R.mipmap.ic_launcher)       // will be displayed if the image cannot be loaded
-////                .override(600, 200) //resizes the image to these dimensions(in pixel).does not respect aspect ratio
-////                .centerCrop()//this cropping technique scales the image so that it fills the requested bounds and then crops the extra
-////                .fitCenter() // this cropping technique scales the image so that it shows all image bounds and maybe cannot fill the targert view
-//                .into(targetImageView);
-
-        //-----3、load from uri--------------
-//        Uri uri = resourceIdToUri(this, R.mipmap.ic_launcher);
-//        Glide.with(this)
-//                .load(uri)
-//                .into(targetImageView);
-
-        //-----4、load gif --------------Gif和video都没有播放起来！！！
-//        String gifUrl = "http://7xrdbm.com1.z0.glb.clouddn.com/%E4%BA%BA%E4%BA%BA%E8%BD%A6%E6%BC%94%E7%A4%BA%E5%9B%BE.gif";
-//        Glide.with(this)
-//                .load(gifUrl)
-//                // Gif检查，如果提供的来源不是一个Gif，就没有办法显示，Glide接受Gif或者图片作为load()参数，如果你期望URL是一个Gif，Glide不会自动检查，
-//                //引入了一个额外的防区强制Glide变成一个Gif,asGif()方法
-//                .asGif()
-////                .asBitmap() //Gif转为Bitmap，仅仅显示Gif的第一帧图片，可调用asBitmap()去保证其作为一个常规的图片显示，即使这个URL是一个Gif
-//                .error(R.mipmap.ic_launcher)
-//                .into(targetImageView);
-
-        //-----5、load video--------------
-//        String videoPath = Environment.getExternalStorageDirectory() + "/DCIM/Camera/VID_20161215_153359.mp4";
-//        Glide.with(this)
-//                .load(Uri.fromFile(new File(videoPath)))
-//                .into(targetImageView);
 
         //-----6、request priority--------------
 //        loadImagesWithHightPriority();

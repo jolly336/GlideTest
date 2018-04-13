@@ -64,6 +64,21 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".activity.CrossFadeActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.crossfade"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.ResizeActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.resize"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
 
 
     <activity android:name="com.nelson.glidetest.NotificationTargetActivity"/>
