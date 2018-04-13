@@ -33,7 +33,7 @@ public class NotificationTargetActivity extends Activity {
     private void triggerNotification() {
         //build remoteView
         RemoteViews rv = new RemoteViews(this.getPackageName(), R.layout.notification_remoteview);
-        rv.setImageViewResource(R.id.iv_notification_icon, R.mipmap.ic_launcher);
+        rv.setImageViewResource(R.id.iv_notification_icon, R.drawable.ic_launcher);
         rv.setTextViewText(R.id.tv_notification_headline, "Headline");
         rv.setTextViewText(R.id.tv_notification_short_msg, "Short Message");
         rv.setProgressBar(R.id.progressbar, 100, 10, false);
@@ -41,7 +41,7 @@ public class NotificationTargetActivity extends Activity {
 
         //build notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.ic_launcher)
                 .setContentTitle("Content Title")
                 .setContentText("Content Text")
                 .setContent(rv)

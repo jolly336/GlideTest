@@ -16,7 +16,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="2dp"
-                android:background="@mipmap/ic_launcher"
+                android:background="@drawable/ic_launcher"
                 android:layout_weight="0"
                 android:scaleType="centerCrop"
         />
