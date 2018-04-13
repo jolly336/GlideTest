@@ -1,40 +1,27 @@
-package com.nelson.glidetest;
+package com.nelson.glidetest.activity;
 
-import android.content.Context;
+import android.os.Bundle;
 import android.os.Environment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
 import java.io.File;
 
 /**
- * Created by Zihuatanejo on 16/12/15.
+ * Created by Nelson on 2018/4/13.
  */
-public class ImageListAdapter extends ArrayAdapter {
 
-    private Context context;
-    private String imageUrls[];
-
-    public ImageListAdapter(Context context, String[] imageUrls) {
-        super(context, R.layout.item_image_list_adapter, imageUrls);
-        this.imageUrls = imageUrls;
-        this.context = context;
-    }
+public class ThumbnailActivity extends AppCompatActivity {
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if (null == convertView) {
-            convertView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_image_list_adapter, parent, false);
-        }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setTitle("Thumbnail");
 
-        //2、缩略图用法二，使用Glide请求作为参数，和原图请求独立开来，独自请求缩略图
+
+     /*   //2、缩略图用法二，使用Glide请求作为参数，和原图请求独立开来，独自请求缩略图
         File thumbnailPath = new File(Environment.getExternalStorageDirectory(), "green.jpg");
         DrawableTypeRequest<File> thumbnailRequest = Glide.with(context)
                 .load(thumbnailPath);
@@ -50,8 +37,7 @@ public class ImageListAdapter extends ArrayAdapter {
                 //1、缩略图用法一，使用thumbnail()函数，这个请求和原图请求是同一个请求
 //                .thumbnail(0.1f) //缩略图，先显示原图的10%的大小，等到原始图像到达后，会抹除缩略图，显示原始图片
                 .thumbnail(thumbnailRequest)
-                .into((ImageView) convertView);
-
-        return convertView;
+                .into((ImageView) convertView);*/
     }
+
 }

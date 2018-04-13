@@ -25,10 +25,14 @@
         tools:src="@drawable/ic_launcher"/>
 
       <ImageView
-        android:id="@+id/iv_resourceId"
+        android:id="@+id/iv_drawableId"
         style="@style/imageview_style"
         tools:src="@drawable/ic_launcher"/>
 
+      <ImageView
+        android:id="@+id/iv_rawId"
+        style="@style/imageview_style"
+        tools:src="@drawable/ic_launcher"/>
 
       <ImageView
         android:id="@+id/iv_file"

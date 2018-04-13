@@ -48,16 +48,24 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".SimpleUsinglActivity">
+    <activity android:name=".activity.SimpleUsinglActivity">
       <intent-filter>
         <action android:name="com.nelson.glidetest.simpleusing"/>
 
         <category android:name="android.intent.category.DEFAULT"/>
       </intent-filter>
-
     </activity>
 
-    <activity android:name="com.nelson.glidetest.ImageListActivity"/>
+    <activity android:name=".activity.ImageListActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.imagelist"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+
+
     <activity android:name="com.nelson.glidetest.NotificationTargetActivity"/>
     <activity android:name="com.nelson.glidetest.LoadProgressActivity"/>
   </application>
