@@ -120,6 +120,15 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".activity.ExceptionActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.exception"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+
 
 
 
