@@ -12,7 +12,8 @@ import com.nelson.glidetest.databinding.ActivityCrossFadeBinding;
 import com.nelson.glidetest.model.ResourceConfig;
 
 /**
- * Showing memory,disk,and other custom defined cache {@link com.nelson.glidetest.CustomCachingGlideModule}
+ * Showing memory,disk,and other custom defined cache size or directory
+ * {@link com.nelson.glidetest.CustomCachingGlideModule}.
  *
  * Created by Nelson on 2018/4/13.
  */
@@ -36,7 +37,7 @@ public class CacheActivity extends AppCompatActivity {
 
     private void showMemoryCache() {
         Glide.with(this)
-                .load(ResourceConfig.IMAGE_REMOTE_URLS[0])
+                .load(ResourceConfig.IMAGE_REMOTE_URLS[3])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
                 .skipMemoryCache(true)
@@ -45,7 +46,7 @@ public class CacheActivity extends AppCompatActivity {
 
     private void showDiskCache() {
         Glide.with(this)
-                .load(ResourceConfig.IMAGE_REMOTE_URLS[1])
+                .load(ResourceConfig.IMAGE_REMOTE_URLS[3])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
                 // no disk cache

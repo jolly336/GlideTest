@@ -7,6 +7,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.load.engine.bitmap_recycle.LruBitmapPool;
 import com.bumptech.glide.load.engine.cache.DiskLruCacheFactory;
+import com.bumptech.glide.load.engine.cache.ExternalCacheDiskCacheFactory;
+import com.bumptech.glide.load.engine.cache.InternalCacheDiskCacheFactory;
 import com.bumptech.glide.load.engine.cache.LruResourceCache;
 import com.bumptech.glide.load.engine.cache.MemorySizeCalculator;
 import com.bumptech.glide.module.GlideModule;
@@ -14,6 +16,7 @@ import com.bumptech.glide.module.GlideModule;
 /**
  * Glide内部使用了{@link MemorySizeCalculator} 类去决定内存缓存大小以及bitmap的缓存池，bitmap池维护了app的堆中的图像分配，
  * 正确的bitmap池是十分必要的，因为它避免了很多的图像重复回收，这样可以确保垃圾回收器的管理更加合理
+ *
  * Created by Nelson on 16/12/19.
  */
 public class CustomCachingGlideModule implements GlideModule {
