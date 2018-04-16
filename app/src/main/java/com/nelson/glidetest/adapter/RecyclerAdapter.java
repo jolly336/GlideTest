@@ -30,6 +30,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Bindin
             "cache",
             "priority",
             "thumbnail",
+            "viewtarget",
     };
 
     private List<RecyclerItem> mRecyclerItemList = new ArrayList<>();

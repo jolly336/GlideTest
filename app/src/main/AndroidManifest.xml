@@ -104,6 +104,15 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".activity.ViewTargetActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.viewtarget"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+
 
 
 

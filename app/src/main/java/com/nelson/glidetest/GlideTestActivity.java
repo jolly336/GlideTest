@@ -169,23 +169,6 @@ public class GlideTestActivity extends AppCompatActivity {
                 .into(targetImageView);
     }
 
-    private void loadImageViewTarget() {
-        final CustomView customView = (CustomView) findViewById(R.id.customView);
-        ViewTarget<CustomView, GlideDrawable> viewTarget = new ViewTarget<CustomView, GlideDrawable>(
-                customView) {
-            @Override
-            public void onResourceReady(GlideDrawable resource,
-                    GlideAnimation<? super GlideDrawable> glideAnimation) {
-                customView.setImage(resource.getCurrent());
-            }
-        };
-
-        Glide.with(this)
-                .load("http://i.imgur.com/rT5vXE1.jpg")
-                .into(viewTarget);
-
-    }
-
     private void loadImageThumbnailRequest() {
         //setup Glide request without the into() method
         DrawableTypeRequest<String> thumbnailRequest = Glide.with(this)
