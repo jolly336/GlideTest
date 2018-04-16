@@ -28,6 +28,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Bindin
             "crossfade",
             "resize",
             "cache",
+            "priority",
+            "thumbnail",
+            "viewtarget",
+            "notification",
+            "exception",
     };
 
     private List<RecyclerItem> mRecyclerItemList = new ArrayList<>();

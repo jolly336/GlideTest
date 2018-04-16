@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+  </data>
+
+  <android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nelson.glidetest.activity.CacheActivity">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="center"
+      android:orientation="vertical">
+
+      <ImageView
+        android:id="@+id/iv_simpleTarget"
+        style="@style/imageview_style"
+        tools:src="@drawable/ic_launcher"/>
+
+      <ImageView
+        android:id="@+id/iv_simpleTargetWithSize"
+        style="@style/imageview_style"
+        tools:src="@drawable/ic_launcher"/>
+
+      <ImageView
+        android:id="@+id/iv_customView"
+        style="@style/imageview_style"
+        tools:src="@drawable/ic_launcher"/>
+
+      <com.nelson.glidetest.view.CustomTargetView
+        android:id="@+id/iv_customTargetView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+  </android.support.v4.widget.NestedScrollView>
+</layout>

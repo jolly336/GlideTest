@@ -7,21 +7,25 @@ import android.content.Context;
 import android.widget.RemoteViews;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.AppWidgetTarget;
+import com.nelson.glidetest.model.ResourceConfig;
 
 /**
  * App Widgets
- * Created by Zihuatanejo on 16/12/16.
+ *
+ * Created by Nelson on 16/12/16.
  */
 public class GlideAppWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 
-        RemoteViews rv = new RemoteViews(context.getPackageName(), R.layout.notification_remoteview);
+        RemoteViews rv = new RemoteViews(context.getPackageName(),
+                R.layout.notification_remoteview);
 
-        AppWidgetTarget appWidgetTarget = new AppWidgetTarget(context, rv, R.id.iv_notification_icon, appWidgetIds);
+        AppWidgetTarget appWidgetTarget = new AppWidgetTarget(context, rv,
+                R.id.iv_notification_icon, appWidgetIds);
         Glide.with(context)
-                .load("http://i.imgur.com/rFLNqWI.jpg")
+                .load(ResourceConfig.IMAGE_REMOTE_URLS[0])
                 .asBitmap()
                 .into(appWidgetTarget);
 

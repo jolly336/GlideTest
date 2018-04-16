@@ -88,8 +88,51 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".activity.PriorityActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.priority"/>
 
-    <activity android:name="com.nelson.glidetest.NotificationTargetActivity"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.ThumbnailActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.thumbnail"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.ViewTargetActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.viewtarget"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.NotificationTargetActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.notification"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.ExceptionActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.exception"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+
+
+
+
+
     <activity android:name="com.nelson.glidetest.LoadProgressActivity"/>
   </application>
 

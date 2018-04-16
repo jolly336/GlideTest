@@ -1,5 +1,7 @@
 package com.nelson.glidetest.model;
 
+import android.content.Context;
+import android.net.Uri;
 import android.os.Environment;
 
 /**
@@ -8,11 +10,15 @@ import android.os.Environment;
 
 public class ResourceConfig {
 
+    public static final String ANDROID_RESOURCE = "android.resource://";
+
+    public static final String FOREWARD_SLASH = "/";
+
     public static final String GIF_REMOTE_URL = "http://opkjcw4sd.bkt.clouddn.com/wind_blowing_leaf.gif";
 
     // This is my phone local path,you can replace this with yours.
     public static final String IMAGE_LOCAL_PATH =
-            Environment.getExternalStorageDirectory() + "/" + "beijing.jpg";
+            Environment.getExternalStorageDirectory() + FOREWARD_SLASH + "beijing.jpg";
 
     public static final String VIDEO_LOCAL_PATH =
             Environment.getExternalStorageDirectory() + "/" + "zhangjiajie.mp4";
@@ -29,5 +35,9 @@ public class ResourceConfig {
             "http://opkjcw4sd.bkt.clouddn.com/photo-1483168527879-c66136b56105.jpeg",
             "http://opkjcw4sd.bkt.clouddn.com/photo-1484893341013-5f1d9c91a96e.jpeg",
     };
+
+    private static Uri resourceIdToUri(Context context, int resourceId) {
+        return Uri.parse(ANDROID_RESOURCE + context.getPackageName() + FOREWARD_SLASH + resourceId);
+    }
 
 }
