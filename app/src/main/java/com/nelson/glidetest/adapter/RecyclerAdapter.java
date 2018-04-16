@@ -22,7 +22,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Bindin
     private static final String ACTION_PRE = "com.nelson.glidetest.";
 
     private String[] mType = new String[]{
-            "glidetest",
             "simpleusing",
             "imagelist",
             "crossfade",
@@ -38,6 +37,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Bindin
             "network",
             "https",
             "customimagesize",
+            "loadprogress",
     };
 
     private List<RecyclerItem> mRecyclerItemList = new ArrayList<>();

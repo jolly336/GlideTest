@@ -1,4 +1,4 @@
-package com.nelson.glidetest;
+package com.nelson.glidetest.activity;
 
 import android.app.ProgressDialog;
 import android.databinding.DataBindingUtil;
@@ -15,6 +15,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityLoadProgressBinding;
 import com.nelson.glidetest.okhttp.ProgressInterceptor;
 import com.nelson.glidetest.okhttp.ProgressListener;

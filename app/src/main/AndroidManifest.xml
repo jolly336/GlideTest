@@ -53,14 +53,6 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".GlideTestActivity">
-      <intent-filter>
-        <action android:name="com.nelson.glidetest.glidetest"/>
-
-        <category android:name="android.intent.category.DEFAULT"/>
-      </intent-filter>
-    </activity>
-
     <activity android:name=".activity.SimpleUsinglActivity">
       <intent-filter>
         <action android:name="com.nelson.glidetest.simpleusing"/>
@@ -181,8 +173,14 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".activity.LoadProgressActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.loadprogress"/>
 
-    <activity android:name="com.nelson.glidetest.LoadProgressActivity"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
   </application>
 
 </manifest>
