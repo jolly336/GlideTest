@@ -2,22 +2,15 @@ package com.nelson.glidetest;
 
 import android.app.Activity;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.ViewTarget;
 import com.nelson.glidetest.activity.ImageListActivity;
+import com.nelson.glidetest.transformation.RotateTransformation;
 
 /**
  * Created by Nelson on 2018/3/15.
@@ -40,38 +33,11 @@ public class GlideTestActivity extends AppCompatActivity {
 
 
 
-        //-----9、custom view target--------------
-//        loadImageViewTarget();
-
-        //-----10、glide code debug--------------
-
-        //在终端打开Log开关，即可看到日志adb shell setprop log.tag.GenericRequest DEBUG
-
-//        RequestListener<String, GlideDrawable> requestListener = new RequestListener<String, GlideDrawable>() {
-//            @Override
-//            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-//                Toast.makeText(MainActivity.this, "图片加载失败：" + e.getMessage(), Toast.LENGTH_SHORT).show();
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-//                Toast.makeText(MainActivity.this, "图片已加载成成功！！！", Toast.LENGTH_SHORT).show();
-//                return false;
-//            }
-//        };
-//
-//        Glide.with(this)
-//                .load("http://i.imgur.com/rT5vXE1_dasdasdasd.jpg")
-//                .listener(requestListener)
-//                .error(R.mipmap.ic_launcher)
-//                .into(targetImageView);
-
         //-----11、custom transformation，使用了转换后就不能在使用.centerCrop()和.fitCenter()了！！！--------------
 //        Glide.with(this)
 //                .load("http://i.imgur.com/rT5vXE1.jpg")
-////                .transform(new IBlurTransformation(this))
-//                //.bitmapTransform(new IBlurTransformation(this))  //this would work too!
+////                .transform(new BlurTransformation(this))
+//                //.bitmapTransform(new BlurTransformation(this))  //this would work too!
 //                .bitmapTransform(new BlurTransformation(this, 25, 1), new CropCircleTransformation(this))
 //                .into(targetImageView);
 

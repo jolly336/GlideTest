@@ -33,6 +33,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Bindin
             "viewtarget",
             "notification",
             "exception",
+            "transformation",
     };
 
     private List<RecyclerItem> mRecyclerItemList = new ArrayList<>();

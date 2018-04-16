@@ -1,4 +1,4 @@
-package com.nelson.glidetest;
+package com.nelson.glidetest.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -7,6 +7,7 @@ import android.content.Context;
 import android.widget.RemoteViews;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.AppWidgetTarget;
+import com.nelson.glidetest.R;
 import com.nelson.glidetest.model.ResourceConfig;
 
 /**

@@ -1,4 +1,4 @@
-package com.nelson.glidetest;
+package com.nelson.glidetest.transformation;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,13 +11,14 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
 /**
  * 用Renderscript来模糊图片
- * Created by Zihuatanejo on 16/12/19.
+ *
+ * Created by Nelson on 16/12/19.
  */
-public class IBlurTransformation extends BitmapTransformation {
+public class BlurTransformation extends BitmapTransformation {
 
     private final RenderScript rs;
 
-    public IBlurTransformation(Context context) {
+    public BlurTransformation(Context context) {
         super(context);
 
         rs = RenderScript.create(context);
@@ -56,6 +57,7 @@ public class IBlurTransformation extends BitmapTransformation {
 
     @Override
     public String getId() {
+        // 描述了这个转换的唯一标识符，Glide使用该键作为缓存系统的一部分，为了避免意外的问题，你需要确保它是唯一的！！！
         return "blur";
     }
 }

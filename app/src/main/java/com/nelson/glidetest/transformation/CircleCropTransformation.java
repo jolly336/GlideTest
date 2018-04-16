@@ -1,4 +1,4 @@
-package com.nelson.glidetest;
+package com.nelson.glidetest.transformation;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -15,9 +15,9 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
  * Created by Nelson on 2018/1/22.
  */
 
-public class CircleCrop extends BitmapTransformation {
+public class CircleCropTransformation extends BitmapTransformation {
 
-    public CircleCrop(Context context) {
+    public CircleCropTransformation(Context context) {
         super(context);
     }
 
@@ -56,6 +56,6 @@ public class CircleCrop extends BitmapTransformation {
 
     @Override
     public String getId() {
-        return "com.zihuatanejo.glidetest.CircleCrop";
+        return "com.nelson.glidetest.transformation.CircleCropTransformation";
     }
 }

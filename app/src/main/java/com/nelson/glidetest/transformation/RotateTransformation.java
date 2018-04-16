@@ -1,4 +1,4 @@
-package com.nelson.glidetest;
+package com.nelson.glidetest.transformation;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,11 +8,16 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
 /**
  * 旋转图片
- * Created by Zihuatanejo on 16/12/20.
+ *
+ * Created by Nelson on 16/12/20.
  */
 public class RotateTransformation extends BitmapTransformation {
 
     private float rotateRotationAngle = 0f; // rotate degrees
+
+    public RotateTransformation(Context context) {
+        this(context, 90f);
+    }
 
     public RotateTransformation(Context context, float rotateRotationAngle) {
         super(context);
@@ -23,7 +28,8 @@ public class RotateTransformation extends BitmapTransformation {
     protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) {
         Matrix matrix = new Matrix();
         matrix.postRotate(rotateRotationAngle);
-        return Bitmap.createBitmap(toTransform, 0, 0, toTransform.getWidth(), toTransform.getHeight(), matrix, true);
+        return Bitmap.createBitmap(toTransform, 0, 0, toTransform.getWidth(),
+                toTransform.getHeight(), matrix, true);
     }
 
     @Override

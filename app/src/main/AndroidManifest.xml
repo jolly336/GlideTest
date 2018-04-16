@@ -128,9 +128,13 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".activity.TransformationActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.transformation"/>
 
-
-
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
 
 
     <activity android:name="com.nelson.glidetest.LoadProgressActivity"/>
