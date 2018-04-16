@@ -112,11 +112,18 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".activity.NotificationTargetActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.notification"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
 
 
 
 
-    <activity android:name="com.nelson.glidetest.NotificationTargetActivity"/>
+
     <activity android:name="com.nelson.glidetest.LoadProgressActivity"/>
   </application>
 

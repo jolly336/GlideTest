@@ -31,6 +31,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Bindin
             "priority",
             "thumbnail",
             "viewtarget",
+            "notification",
     };
 
     private List<RecyclerItem> mRecyclerItemList = new ArrayList<>();

@@ -40,27 +40,6 @@ public class GlideTestActivity extends AppCompatActivity {
 
 
 
-        //-----6、request priority--------------
-//        loadImagesWithHightPriority();
-//        loadImagesWithLowPriority();
-
-        //-----7、load thumbnail request--------------
-//        loadImageThumbnailRequest();
-
-        //-----8、simple target--------------
-        //注意：可在target构造参数里加强宽高，可在回调中声明指定它以节省内存和时间
-//        final SimpleTarget<Bitmap> target = new SimpleTarget<Bitmap>(/*500, 500*/) {
-//            @Override
-//            public void onResourceReady(Bitmap bitmap, GlideAnimation<? super Bitmap> glideAnimation) {
-//                targetImageView.setImageBitmap(bitmap);
-//            }
-//        };
-//
-//        Glide.with(this)
-//                .load("http://i.imgur.com/rFLNqWI.jpg")
-//                .asBitmap()
-//                .into(target);
-
         //-----9、custom view target--------------
 //        loadImageViewTarget();
 
@@ -163,56 +142,6 @@ public class GlideTestActivity extends AppCompatActivity {
                 .into(targetImageView);
     }
 
-    private void loadImageOriginal() {
-        Glide.with(this)
-                .load("http://i.imgur.com/rT5vXE1.jpg")
-                .into(targetImageView);
-    }
-
-    private void loadImageThumbnailRequest() {
-        //setup Glide request without the into() method
-        DrawableTypeRequest<String> thumbnailRequest = Glide.with(this)
-                .load("http://i.imgur.com/rT5vXE1.jpg");
-
-        //pass the request as a parameter to the thumbnail request
-        Glide.with(this)
-                .load("http://i.imgur.com/rFLNqWI.jpg")
-                .thumbnail(thumbnailRequest)
-                .into(targetImageView);
-
-    }
-
-    private void loadImagesWithHightPriority() {
-        Glide.with(this)
-                .load("http://i.imgur.com/rFLNqWI.jpg")
-                //LOW,NORMAL,HIGH,IMMEDIATE 枚举，请求优先级，优先级并不是完全严格遵守的，Glide将会用他们作为一个准则，并尽可能的处理这些请求，
-                //但是不能保证所有的图片都会按照所要求的顺序加载
-                .priority(Priority.HIGH) //请求优先级，
-                .skipMemoryCache(true)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .thumbnail(0.1f)
-                .into(targetImageView);
-    }
-
-    private void loadImagesWithLowPriority() {
-        Glide.with(this)
-                .load("http://i.imgur.com/aIy5R2k.jpg")
-                .priority(Priority.LOW)
-                .into(lowImageView_1);
-
-        Glide.with(this)
-                .load("http://i.imgur.com/fUX7EIB.jpg")
-                .priority(Priority.LOW)
-                .into(lowImageView_2);
-    }
-
-    public static final String ANDROID_RESOURCE = "android.resource://";
-    public static final String FOREWARD_SLASH = "/";
-
-    private static Uri resourceIdToUri(Context context, int resourceId) {
-        return Uri.parse(ANDROID_RESOURCE + context.getPackageName() + FOREWARD_SLASH + resourceId);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -224,9 +153,6 @@ public class GlideTestActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_image_list:
                 jump2Act(ImageListActivity.class);
-                break;
-            case R.id.action_notification_target:
-                jump2Act(NotificationTargetActivity.class);
                 break;
             case R.id.action_load_progress:
                 jump2Act(LoadProgressActivity.class);
