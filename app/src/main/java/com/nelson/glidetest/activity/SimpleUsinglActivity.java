@@ -49,7 +49,7 @@ public class SimpleUsinglActivity extends AppCompatActivity {
     }
 
     private void loadImageByUrl() {
-        String remoteUrl = ResourceConfig.IMAGE_REMOTE_URL;
+        String remoteUrl = ResourceConfig.IMAGE_REMOTE_URLS[0];
         Glide.with(this)
                 .load(remoteUrl)
                 .placeholder(R.drawable.placeholder)
@@ -111,6 +111,7 @@ public class SimpleUsinglActivity extends AppCompatActivity {
     private void loadVideoByUri() {
         String videoPath = ResourceConfig.VIDEO_LOCAL_PATH;
         Glide.with(this)
+                // Glide只能加载存储在设备本地上的视频，如果是网络URL视频，Glide是不工作的，如果想显示远端视频，去看看VideoView
                 .load(Uri.fromFile(new File(videoPath)))
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)

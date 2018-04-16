@@ -36,7 +36,7 @@ public class ResizeActivity extends AppCompatActivity {
 
     private void showOverride() {
         Glide.with(this)
-                .load(ResourceConfig.IMAGE_REMOTE_URL)
+                .load(ResourceConfig.IMAGE_REMOTE_URLS[2])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
                 // Resize the image to these dimensions(in pixel).does not respect aspect ratio
@@ -48,7 +48,7 @@ public class ResizeActivity extends AppCompatActivity {
 
     private void showCenterCrop() {
         Glide.with(this)
-                .load(ResourceConfig.IMAGE_REMOTE_URL)
+                .load(ResourceConfig.IMAGE_REMOTE_URLS[2])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
                 // CenterCrop()是一个裁剪技术，即缩放图像让它填充到 ImageView 界限内并且裁剪额外的部分。ImageView 可能会完全填充，但图像可能不会完整显示
@@ -58,7 +58,7 @@ public class ResizeActivity extends AppCompatActivity {
 
     private void showFitCenter() {
         Glide.with(this)
-                .load(ResourceConfig.IMAGE_REMOTE_URL)
+                .load(ResourceConfig.IMAGE_REMOTE_URLS[2])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
                 // fitCenter() 是裁剪技术，即缩放图像让图像都测量出来等于或小于 ImageView 的边界范围。该图像将会完全显示，但可能不会填满整个 ImageView

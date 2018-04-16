@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityImageListAdapterBinding;
+import com.nelson.glidetest.model.ResourceConfig;
 
 /**
  * ListAdapter(ListView)
@@ -22,18 +23,6 @@ import com.nelson.glidetest.databinding.ActivityImageListAdapterBinding;
 
 public class ImageListActivity extends AppCompatActivity {
 
-    public static String[] IMAGES = {
-            "http://opkjcw4sd.bkt.clouddn.com/anthony-intraversato-257182.jpg",
-            "http://opkjcw4sd.bkt.clouddn.com/photo-1449034446853-66c86144b0ad.jpeg",
-            "http://opkjcw4sd.bkt.clouddn.com/brooke-lark-158017.jpg",
-            "http://opkjcw4sd.bkt.clouddn.com/brooke-lark-254998.jpg",
-            "http://opkjcw4sd.bkt.clouddn.com/christian-joudrey-96208.jpg",
-            "http://opkjcw4sd.bkt.clouddn.com/clement-h-544786.jpg",
-            "http://opkjcw4sd.bkt.clouddn.com/kevin-noble-524437.jpg",
-            "http://opkjcw4sd.bkt.clouddn.com/photo-1483168527879-c66136b56105.jpeg",
-            "http://opkjcw4sd.bkt.clouddn.com/photo-1484893341013-5f1d9c91a96e.jpeg",
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +30,8 @@ public class ImageListActivity extends AppCompatActivity {
 
         ActivityImageListAdapterBinding dataBinding = DataBindingUtil
                 .setContentView(this, R.layout.activity_image_list_adapter);
-        dataBinding.lvImageList.setAdapter(new ImageListAdapter(this, IMAGES));
+        dataBinding.lvImageList.setAdapter(new ImageListAdapter(this,
+                ResourceConfig.IMAGE_REMOTE_URLS));
     }
 
 

@@ -35,7 +35,7 @@ public class CrossFadeActivity extends AppCompatActivity {
 
     private void showPlaceHolder() {
         Glide.with(this)
-                .load(ResourceConfig.IMAGE_REMOTE_URL)
+                .load(ResourceConfig.IMAGE_REMOTE_URLS[1])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
                 .into(mBinding.ivPlaceholder);
@@ -43,7 +43,7 @@ public class CrossFadeActivity extends AppCompatActivity {
 
     private void showCrossFade() {
         Glide.with(this)
-                .load(ResourceConfig.IMAGE_REMOTE_URL)
+                .load(ResourceConfig.IMAGE_REMOTE_URLS[1])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
                 //.crossFade()
@@ -54,7 +54,7 @@ public class CrossFadeActivity extends AppCompatActivity {
 
     private void showAnimate() {
         Glide.with(this)
-                .load(ResourceConfig.IMAGE_REMOTE_URL)
+                .load(ResourceConfig.IMAGE_REMOTE_URLS[1])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
                 .dontAnimate()
