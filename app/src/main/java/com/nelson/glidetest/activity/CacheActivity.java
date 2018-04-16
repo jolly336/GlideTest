@@ -8,12 +8,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityCacheBinding;
-import com.nelson.glidetest.databinding.ActivityCrossFadeBinding;
+import com.nelson.glidetest.glidemodule.CustomCachingGlideModule;
 import com.nelson.glidetest.model.ResourceConfig;
 
 /**
  * Showing memory,disk,and other custom defined cache size or directory
- * {@link com.nelson.glidetest.CustomCachingGlideModule}.
+ * {@link CustomCachingGlideModule}.
  *
  * Created by Nelson on 2018/4/13.
  */

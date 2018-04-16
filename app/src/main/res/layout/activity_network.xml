@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+  </data>
+
+  <android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nelson.glidetest.activity.CacheActivity">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="center"
+      android:orientation="vertical">
+
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Glide为2个网络库提供了实现：Volley和OkHttp，2者只需要在module的build.gradle文件中添加依赖即可，Gradle会自动合并必要的GlideModule到你的Android.Manifest，Glide会认可在manifest中的存在，然后使用OkHttp做到所有的网络连接。"/>
+
+    </LinearLayout>
+
+  </android.support.v4.widget.NestedScrollView>
+</layout>

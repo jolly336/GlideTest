@@ -1,4 +1,4 @@
-package com.nelson.glidetest;
+package com.nelson.glidetest.network;
 
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.data.DataFetcher;
@@ -12,7 +12,8 @@ import java.util.Map;
 
 /**
  * 需要用我们的不安全的OkHttpClient去连接URL激活输入流，因此，我们需要另外一个类去从一个URL中拉取返回的输入流
- * Created by Zihuatanejo on 16/12/19.
+ *
+ * Created by Nelson on 16/12/19.
  */
 public class UnsafeOkHttpStreamFetcher implements DataFetcher<InputStream> {
 

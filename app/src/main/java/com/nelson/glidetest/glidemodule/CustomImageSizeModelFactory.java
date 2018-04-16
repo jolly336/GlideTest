@@ -1,4 +1,4 @@
-package com.nelson.glidetest;
+package com.nelson.glidetest.glidemodule;
 
 import android.content.Context;
 import com.bumptech.glide.load.model.GenericLoaderFactory;
@@ -8,7 +8,7 @@ import com.bumptech.glide.load.model.ModelLoaderFactory;
 import java.io.InputStream;
 
 /**
- * Created by Zihuatanejo on 16/12/19.
+ * Created by Nelson on 16/12/19.
  */
 public class CustomImageSizeModelFactory implements ModelLoaderFactory<CustomImageSizeModel, InputStream> {
 

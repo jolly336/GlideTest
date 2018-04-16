@@ -1,7 +1,7 @@
-package com.nelson.glidetest;
+package com.nelson.glidetest.glidemodule;
 
 /**
- * Created by Zihuatanejo on 16/12/19.
+ * Created by Nelson on 16/12/19.
  */
 public class CustomImageSizeModelFuture implements CustomImageSizeModel {
 

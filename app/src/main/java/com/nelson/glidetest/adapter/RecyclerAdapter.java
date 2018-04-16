@@ -34,6 +34,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Bindin
             "notification",
             "exception",
             "transformation",
+            "animate",
+            "network",
+            "https",
+            "customimagesize",
     };
 
     private List<RecyclerItem> mRecyclerItemList = new ArrayList<>();

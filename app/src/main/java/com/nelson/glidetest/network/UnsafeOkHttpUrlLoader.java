@@ -1,4 +1,4 @@
-package com.nelson.glidetest;
+package com.nelson.glidetest.network;
 
 import android.content.Context;
 import com.bumptech.glide.load.data.DataFetcher;
@@ -12,7 +12,8 @@ import java.io.InputStream;
 
 /**
  * 创建一个ModelLoaderFactory，他用UnsafeHttpClient来提供了一个URL和输入流之前的连接
- * Created by Zihuatanejo on 16/12/19.
+ *
+ * Created by Nelson on 16/12/19.
  */
 public class UnsafeOkHttpUrlLoader implements ModelLoader<GlideUrl, InputStream> {
 
@@ -44,14 +45,14 @@ public class UnsafeOkHttpUrlLoader implements ModelLoader<GlideUrl, InputStream>
 
         /**
          * Constuctor for a new Factory that runs request using given client.
-         * @param client
          */
         public Factory(OkHttpClient client) {
             this.client = client;
         }
 
         @Override
-        public ModelLoader<GlideUrl, InputStream> build(Context context, GenericLoaderFactory factories) {
+        public ModelLoader<GlideUrl, InputStream> build(Context context,
+                GenericLoaderFactory factories) {
             return new UnsafeOkHttpUrlLoader(client);
         }
 

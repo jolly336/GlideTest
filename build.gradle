@@ -40,7 +40,7 @@ ext {
     gpuimageLibrary = '1.3.0'
 
     okhttp = '3.9.0'
-    okhttp3Integration = '1.4.0@aar'
+    okhttp3Integration = '1.5.0@aar'
     volley = '1.0.8'
-    volleyIntegration = '1.4.0@aar'
+    volleyIntegration = '1.5.0@aar'
 }

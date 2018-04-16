@@ -13,24 +13,37 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
 
-    <meta-data
-      android:name="com.nelson.glidetest.SimpleGlideModule"
-      android:value="GlideModule"/>
-    <!--  <meta-data
-              android:name="com.zihuatanejo.glidetest.UnsafeOkHttpGlideModule"
-              android:value="GlideModule"/>-->
-    <!-- <meta-data
-             android:name="com.zihuatanejo.glidetest.CustomCachingGlideModule"
-             android:value="GlideModule"/>-->
+    <!-- Module实例：decode format：ARGB_8888 -->
+    <!--
+        <meta-data
+          android:name="com.nelson.glidetest.glidemodule.SimpleGlideModule"
+          android:value="GlideModule"/>
+    -->
 
+    <!-- Module实例：接受自签名证书的HTTPS -->
     <meta-data
-      android:name="com.nelson.glidetest.CustomImageSizeGlideModule"
+      android:name="com.nelson.glidetest.glidemodule.UnsafeOkHttpGlideModule"
       android:value="GlideModule"/>
 
-    <meta-data
-      android:name="com.nelson.glidetest.okhttp.OkHttpGlideModule"
-      android:value="GlideModule"/>
+    <!-- Module实例：自定义缓存 -->
+    <!--
+        <meta-data
+          android:name="com.nelson.glidetest.glidemodule.CustomCachingGlideModule"
+          android:value="GlideModule"/>
+    -->
 
+    <!-- Module实例：用自定义尺寸优化加载的图片(如果不在manifest中注册，需要给每个请求上使用.using(ModelLoader)来请求) -->
+    <!--
+        <meta-data
+          android:name="com.nelson.glidetest.glidemodule.CustomImageSizeGlideModule"
+          android:value="GlideModule"/>
+    -->
+
+    <!--
+      <meta-data
+        android:name="com.nelson.glidetest.okhttp.OkHttpGlideModule"
+        android:value="GlideModule"/>
+    -->
 
     <activity android:name="com.nelson.glidetest.MainActivity">
       <intent-filter>
@@ -131,6 +144,38 @@
     <activity android:name=".activity.TransformationActivity">
       <intent-filter>
         <action android:name="com.nelson.glidetest.transformation"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.AnimateActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.animate"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.NetworkActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.network"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.HttpsActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.https"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.CustomImageSizeActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.customimagesize"/>
 
         <category android:name="android.intent.category.DEFAULT"/>
       </intent-filter>

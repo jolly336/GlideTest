@@ -1,4 +1,4 @@
-package com.nelson.glidetest;
+package com.nelson.glidetest.glidemodule;
 
 import android.content.Context;
 import android.os.Environment;
@@ -28,6 +28,7 @@ public class CustomCachingGlideModule implements GlideModule {
         int defaultMemoryCacheSize = calculator.getMemoryCacheSize();
         int defaultBitmapPoolSize = calculator.getBitmapPoolSize();
 
+        // app需要多余20%的缓存作为Glide的默认值
         int customMemoryCacheSize = (int) (1.2 * defaultMemoryCacheSize);
         int customBitmapPoolSize = (int) (1.2 * defaultBitmapPoolSize);
 

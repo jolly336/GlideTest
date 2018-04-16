@@ -23,6 +23,7 @@ public class ResourceConfig {
     public static final String VIDEO_LOCAL_PATH =
             Environment.getExternalStorageDirectory() + "/" + "zhangjiajie.mp4";
 
+    public static final String IMAGE_HTTPS_URL = "https://ohsoc622i.qnssl.com/grren.jpg";
 
     public static final String[] IMAGE_REMOTE_URLS = {
             "http://opkjcw4sd.bkt.clouddn.com/anthony-intraversato-257182.jpg",

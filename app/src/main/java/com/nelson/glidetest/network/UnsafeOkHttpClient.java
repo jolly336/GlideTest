@@ -1,4 +1,4 @@
-package com.nelson.glidetest;
+package com.nelson.glidetest.network;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Protocol;
@@ -10,7 +10,11 @@ import java.security.cert.X509Certificate;
 import java.util.Arrays;
 
 /**
- * Created by Zihuatanejo on 16/12/19.
+ * 不安全的OkHttpClient（创建OkHttpClient禁用掉所有的SSL证书检查）
+ *
+ * 自己实现网络栈，接受自签名证书
+ *
+ * Created by Nelson on 16/12/19.
  */
 public class UnsafeOkHttpClient {
 
@@ -21,12 +25,14 @@ public class UnsafeOkHttpClient {
             TrustManager[] trustAllCerts = new TrustManager[]{
                     new X509TrustManager() {
                         @Override
-                        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                        public void checkClientTrusted(X509Certificate[] chain, String authType)
+                                throws CertificateException {
 
                         }
 
                         @Override
-                        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                        public void checkServerTrusted(X509Certificate[] chain, String authType)
+                                throws CertificateException {
 
                         }
 
@@ -44,7 +50,6 @@ public class UnsafeOkHttpClient {
 
             // Create an ssl socket factory with our all-trusting manager
             SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
-
 
             //创建OkHttpClient禁用掉所有的SSL证书检查
             OkHttpClient.Builder builder = new OkHttpClient.Builder();

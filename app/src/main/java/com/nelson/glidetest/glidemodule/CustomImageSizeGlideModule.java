@@ -1,4 +1,4 @@
-package com.nelson.glidetest;
+package com.nelson.glidetest.glidemodule;
 
 import android.content.Context;
 import com.bumptech.glide.Glide;
@@ -8,7 +8,16 @@ import com.bumptech.glide.module.GlideModule;
 import java.io.InputStream;
 
 /**
- * Created by Zihuatanejo on 16/12/19.
+ * 用自定义尺寸优化加载的图片
+ *
+ * // previous way: we directly accessed the images
+ * https://futurestud.io/images/logo.png
+ *
+ * // new way, server could handle additional parameter and provide the image in a specific size
+ * // in this case, the server would serve the image in 400x300 pixel size
+ * https://futurestud.io/images/logo.png?w=400&h=300
+ *
+ * Created by Nelson on 16/12/19.
  */
 public class CustomImageSizeGlideModule implements GlideModule {
 
@@ -24,6 +33,7 @@ public class CustomImageSizeGlideModule implements GlideModule {
          * 所以在这里可以创建并传递一个CustomImageSizeModel的实例去实现给Glide,为了处理这个新的自定义的model，
          * 我们需要去写一个CustomImageSizeModelFactory类，创建了我们的model处理的实例
          */
-        glide.register(CustomImageSizeModel.class, InputStream.class, new CustomImageSizeModelFactory());
+        glide.register(CustomImageSizeModel.class, InputStream.class,
+                new CustomImageSizeModelFactory());
     }
 }
