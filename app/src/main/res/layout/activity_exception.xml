@@ -22,7 +22,6 @@
         android:id="@+id/iv_listener"
         style="@style/imageview_style"
         tools:src="@drawable/ic_launcher"/>
-
     </LinearLayout>
 
   </android.support.v4.widget.NestedScrollView>
