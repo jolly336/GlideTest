@@ -21,9 +21,11 @@
     -->
 
     <!-- Module实例：接受自签名证书的HTTPS（禁掉所有校验） -->
-    <meta-data
-      android:name="com.nelson.glidetest.glidemodule.UnsafeOkHttpGlideModule"
-      android:value="GlideModule"/>
+    <!--
+        <meta-data
+          android:name="com.nelson.glidetest.glidemodule.UnsafeOkHttpGlideModule"
+          android:value="GlideModule"/>
+    -->
 
     <!-- Module实例：接受自签名证书的HTTPS（校验证书，以12306.cn为例） -->
     <!--
@@ -46,11 +48,10 @@
           android:value="GlideModule"/>
     -->
 
-    <!--
-      <meta-data
-        android:name="com.nelson.glidetest.okhttp.OkHttpGlideModule"
-        android:value="GlideModule"/>
-    -->
+    <!-- Module实例：替换原来HTTP通讯组件（实现带进度的Glide图片加载）-->
+    <meta-data
+      android:name="com.nelson.glidetest.okhttp.OkHttpGlideModule"
+      android:value="GlideModule"/>
 
     <activity android:name="com.nelson.glidetest.MainActivity">
       <intent-filter>

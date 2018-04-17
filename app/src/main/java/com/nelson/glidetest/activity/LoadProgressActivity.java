@@ -17,6 +17,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityLoadProgressBinding;
+import com.nelson.glidetest.model.ResourceConfig;
 import com.nelson.glidetest.okhttp.ProgressInterceptor;
 import com.nelson.glidetest.okhttp.ProgressListener;
 
@@ -30,7 +31,7 @@ public class LoadProgressActivity extends AppCompatActivity {
 
     private static final String TAG = "LoadProgressActivity";
 
-    private static final String URL = "http://omdtn071e.bkt.clouddn.com/anthony-intraversato-257182.jpg";
+    private static final String URL = ResourceConfig.IMAGE_REMOTE_URLS[0];
 
     private ActivityLoadProgressBinding mBinding;
     private ProgressDialog mProgressDialog;
@@ -47,6 +48,7 @@ public class LoadProgressActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        // Just for test
         mBinding.ivImage.post(new Runnable() {
             @Override
             public void run() {
@@ -69,6 +71,7 @@ public class LoadProgressActivity extends AppCompatActivity {
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
+        // Just for test
         if (hasFocus) {
             Log.e(TAG, "onWindowFocusChanged: width: " + mBinding.ivImage.getWidth() + ", height: "
                     + mBinding.ivImage.getHeight());
@@ -88,7 +91,7 @@ public class LoadProgressActivity extends AppCompatActivity {
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .dontTransform()
                 //.override(ViewTarget.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
-                .placeholder(R.drawable.ic_launcher)
+                .placeholder(R.drawable.placeholder)
                 .error(R.drawable.net_error_img)
                 //into(mBinding.ivImage);
                 .into(new GlideDrawableImageViewTarget(mBinding.ivImage) {

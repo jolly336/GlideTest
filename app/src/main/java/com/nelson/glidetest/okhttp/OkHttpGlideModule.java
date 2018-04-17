@@ -25,7 +25,7 @@ public class OkHttpGlideModule implements GlideModule {
 
     @Override
     public void registerComponents(Context context, Glide glide) {
-        Builder builder = new Builder();
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.retryOnConnectionFailure(true);
         builder.addInterceptor(new ProgressInterceptor());
         OkHttpClient okHttpClient = builder.build();
