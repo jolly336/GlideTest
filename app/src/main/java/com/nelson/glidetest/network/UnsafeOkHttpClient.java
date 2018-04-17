@@ -36,10 +36,15 @@ public class UnsafeOkHttpClient {
 
                         }
 
+                        /**
+                         * Return a array of certificate authority certificates which are trusted for authenticating peers.
+                         * Returns:
+                         * a non-null (possibly empty) array of acceptable CA issuer certificates.
+                         * @see https://github.com/square/okhttp/issues/2364
+                         */
                         @Override
                         public X509Certificate[] getAcceptedIssuers() {
-//                        return new X509Certificate[0];
-                            return null;
+                            return new X509Certificate[0];
                         }
                     }
             };

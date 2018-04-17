@@ -32,13 +32,13 @@ public class CustomImageSizeActivity extends AppCompatActivity {
 
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_custom_image_size);
 
-        showCustomImageSize();
+        //showCustomImageSize();
 
         showCustomImageSizeUsingSingleRequest();
     }
 
     /**
-     * 自定义尺寸优化加载的图片
+     * 自定义尺寸优化加载的图片(全局使用，需要在Manifest文件中注册GlideModel)
      */
     private void showCustomImageSize() {
         String baseImageUrl = ResourceConfig.IMAGE_HTTPS_URL;

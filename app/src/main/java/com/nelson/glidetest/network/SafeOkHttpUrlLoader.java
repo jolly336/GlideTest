@@ -6,16 +6,15 @@ import com.bumptech.glide.load.model.GenericLoaderFactory;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.ModelLoader;
 import com.bumptech.glide.load.model.ModelLoaderFactory;
+import java.io.InputStream;
 import okhttp3.OkHttpClient;
 
-import java.io.InputStream;
-
 /**
- * 创建一个ModelLoaderFactory，他用UnsafeHttpClient来提供了一个URL和输入流之前的连接
+ * 创建一个ModelLoaderFactory，他用SafeHttpClient来提供了一个URL和输入流之前的连接
  *
  * Created by Nelson on 16/12/19.
  */
-public class UnsafeOkHttpUrlLoader implements ModelLoader<GlideUrl, InputStream> {
+public class SafeOkHttpUrlLoader implements ModelLoader<GlideUrl, InputStream> {
 
     /**
      * The default factory for{@link com.bumptech.glide.integration.okhttp3.OkHttpUrlLoader}s.
@@ -29,7 +28,7 @@ public class UnsafeOkHttpUrlLoader implements ModelLoader<GlideUrl, InputStream>
             if (internalClient == null) {
                 synchronized (Factory.class) {
                     if (internalClient == null) {
-                        internalClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
+                        internalClient = new OkHttpClient();
                     }
                 }
             }
@@ -53,7 +52,7 @@ public class UnsafeOkHttpUrlLoader implements ModelLoader<GlideUrl, InputStream>
         @Override
         public ModelLoader<GlideUrl, InputStream> build(Context context,
                 GenericLoaderFactory factories) {
-            return new UnsafeOkHttpUrlLoader(client);
+            return new SafeOkHttpUrlLoader(client);
         }
 
         @Override
@@ -69,7 +68,7 @@ public class UnsafeOkHttpUrlLoader implements ModelLoader<GlideUrl, InputStream>
 
     private OkHttpClient client;
 
-    public UnsafeOkHttpUrlLoader(OkHttpClient client) {
+    public SafeOkHttpUrlLoader(OkHttpClient client) {
         this.client = client;
     }
 

@@ -15,14 +15,14 @@ import java.util.Map;
  *
  * Created by Nelson on 16/12/19.
  */
-public class UnsafeOkHttpStreamFetcher implements DataFetcher<InputStream> {
+public class OkHttpStreamFetcher implements DataFetcher<InputStream> {
 
     private OkHttpClient client;
     private GlideUrl url;
     private InputStream stream;
     private ResponseBody responseBody;
 
-    public UnsafeOkHttpStreamFetcher(OkHttpClient client, GlideUrl url) {
+    public OkHttpStreamFetcher(OkHttpClient client, GlideUrl url) {
         this.client = client;
         this.url = url;
     }
