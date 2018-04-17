@@ -1,4 +1,4 @@
-package com.nelson.glidetest.okhttp;
+package com.nelson.glidetest.network.okhttp;
 
 import android.support.annotation.Nullable;
 import android.util.Log;

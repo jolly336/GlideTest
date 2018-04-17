@@ -1,4 +1,4 @@
-package com.nelson.glidetest.okhttp;
+package com.nelson.glidetest.network.okhttp;
 
 import android.content.Context;
 import com.bumptech.glide.load.data.DataFetcher;

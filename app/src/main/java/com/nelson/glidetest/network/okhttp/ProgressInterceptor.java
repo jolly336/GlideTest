@@ -1,4 +1,4 @@
-package com.nelson.glidetest.okhttp;
+package com.nelson.glidetest.network.okhttp;
 
 import java.io.IOException;
 import java.util.HashMap;

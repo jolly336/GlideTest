@@ -18,8 +18,8 @@ import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityLoadProgressBinding;
 import com.nelson.glidetest.model.ResourceConfig;
-import com.nelson.glidetest.okhttp.ProgressInterceptor;
-import com.nelson.glidetest.okhttp.ProgressListener;
+import com.nelson.glidetest.network.okhttp.ProgressInterceptor;
+import com.nelson.glidetest.network.okhttp.ProgressListener;
 
 /**
  * Load image with {@link ProgressDialog}

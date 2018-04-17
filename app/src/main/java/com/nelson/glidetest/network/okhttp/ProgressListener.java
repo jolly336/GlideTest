@@ -1,4 +1,4 @@
-package com.nelson.glidetest.okhttp;
+package com.nelson.glidetest.network.okhttp;
 
 /**
  * Created by Nelson on 2018/1/22.

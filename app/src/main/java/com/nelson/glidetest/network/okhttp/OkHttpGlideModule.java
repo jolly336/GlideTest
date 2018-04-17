@@ -1,4 +1,4 @@
-package com.nelson.glidetest.okhttp;
+package com.nelson.glidetest.network.okhttp;
 
 import android.content.Context;
 import com.bumptech.glide.Glide;
@@ -8,7 +8,6 @@ import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.module.GlideModule;
 import java.io.InputStream;
 import okhttp3.OkHttpClient;
-import okhttp3.OkHttpClient.Builder;
 
 /**
  * Created by Nelson on 2018/1/22.

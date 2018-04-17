@@ -50,7 +50,7 @@
 
     <!-- Module实例：替换原来HTTP通讯组件（实现带进度的Glide图片加载）-->
     <meta-data
-      android:name="com.nelson.glidetest.okhttp.OkHttpGlideModule"
+      android:name="com.nelson.glidetest.network.okhttp.OkHttpGlideModule"
       android:value="GlideModule"/>
 
     <activity android:name="com.nelson.glidetest.MainActivity">
