@@ -1,29 +1,38 @@
 [![Build Status](https://travis-ci.org/haoxunwang/GlideTest.svg)](https://travis-ci.org/haoxunwang/GlideTest)
 > This project is just only used to demonstrate basic use of [Glide](https://github.com/bumptech/glide) image load engine.
 
-![](static/glide_logo.png)
+![Glide logo](static/glide_logo.png)
 
 ## Contents
 
- * [simpleusing](#simpleusing)
- * [imagelist](#imagelist)
- * [crossfade](#crossfade)
- * [resize](#resize)
- * [cache](#cache)
- * [priority](#priority)
- * [thumbnail](#thumbnail)
- * [viewtarget](#viewtarget)
- * [notification](#notification)
- * [exception](#exception)
- * [transformation](#transformation)
- * [animate](#animate)
- * [network](#network)
- * [https](#https)
- * [customimagesize](#customimagesize)
- * [loadprogress](#loadprogress)
+ * [simpleusing - 入门](#simpleusing)
+ * [imagelist - 列表图片](#imagelist)
+ * [crossfade - 渐现动画](#crossfade)
+ * [resize - 图片重设大小和缩放](#resize)
+ * [cache - 缓存](#cache)
+ * [priority - 请求优先级](#priority)
+ * [thumbnail - 缩略图](#thumbnail)
+ * [viewtarget - 自定义视图](#viewtarget)
+ * [notification - 通知栏和应用小部件](#notification)
+ * [exception - 异常](#exception)
+ * [transformation - 自定义转换](#transformation)
+ * [animate - 自定义动画](#animate)
+ * [network - 集成网络栈](#network)
+ * [https - 接受自定义证书的HTTPS](#https)
+ * [customimagesize - 自定义图片尺寸优化加载图片](#customimagesize)
+ * [loadprogress - 自定义带进度条加载图片](#loadprogress)
+ * [Glide4.0 - 全面了解Glide4.0](#Glide4.0) work in progress
 
-# Thanks
+## Discuss
+
+Contact me: haoxunwang525@gmail.com
+
+## Thanks
 
 * [Glide](https://github.com/bumptech/glide)
 * [Glide系列](https://mrfu.me/2016/02/27/Glide_Getting_Started/)
 * [实现带进度的Glide图片加载功能](https://blog.csdn.net/guolin_blog/article/details/78357251)
+* [OkHttp](https://github.com/square/okhttp)
+
+
+## License
