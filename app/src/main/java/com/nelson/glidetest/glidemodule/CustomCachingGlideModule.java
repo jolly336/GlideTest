@@ -5,12 +5,14 @@ import android.os.Environment;
 import android.util.Log;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.bitmap_recycle.LruBitmapPool;
 import com.bumptech.glide.load.engine.cache.DiskLruCacheFactory;
 import com.bumptech.glide.load.engine.cache.ExternalCacheDiskCacheFactory;
 import com.bumptech.glide.load.engine.cache.InternalCacheDiskCacheFactory;
 import com.bumptech.glide.load.engine.cache.LruResourceCache;
 import com.bumptech.glide.load.engine.cache.MemorySizeCalculator;
+import com.bumptech.glide.load.engine.executor.FifoPriorityThreadPoolExecutor;
 import com.bumptech.glide.module.GlideModule;
 
 /**
@@ -20,6 +22,11 @@ import com.bumptech.glide.module.GlideModule;
  * Created by Nelson on 16/12/19.
  */
 public class CustomCachingGlideModule implements GlideModule {
+
+    /**
+     * 100MB
+     */
+    public static final int DISK_CACHE_SIZE = 100 * 1024 * 1024;
 
     @Override
     public void applyOptions(Context context, GlideBuilder builder) {
@@ -37,14 +44,27 @@ public class CustomCachingGlideModule implements GlideModule {
          * 我们不能直接设置大小，我们需要创建一个LruResourceCache和LruBitmapPool的实例，这两个都是Glide的默认实现。
          * 因此，如果你仅仅想要调整大小，就可以继续使用它们通过传两个不同大小的值给构造函数
          */
+        // 内存缓存策略
         builder.setMemoryCache(new LruResourceCache(customMemoryCacheSize));
+        // Bitmap缓存池
         builder.setBitmapPool(new LruBitmapPool(customBitmapPoolSize));
 
+        // 加载图片的解码模式，默认配置是RGB_565
+        //builder.setDecodeFormat(DecodeFormat.PREFER_ARGB_8888);
+
         //-------自定义磁盘缓存--------------------
+        // 读取缓存中图片的异步执行器，默认配置是FifoPriorityThreadPoolExecutor，先入先出原则
+        //builder.setDiskCacheService(new FifoPriorityThreadPoolExecutor(1));
+
+        // 读取非缓存中图片的执行器，默认配置也是FifoPriorityThreadPoolExecutor
+        //builder.setResizeService(new FifoPriorityThreadPoolExecutor(1));
+
         // set size & external vs. internal
-        int cacheSize100MegaBytes = 104857600;//100MB
-        //builder.setDiskCache(new InternalCacheDiskCacheFactory(context, cacheSize100MegaBytes));
-        //builder.setDiskCache(new ExternalCacheDiskCacheFactory(context, cacheSize100MegaBytes));
+        // 默认InternalCacheDiskCacheFactory内部存储，可以设置缓存到SD卡上；默认2者磁盘缓存大小都是250MB
+        //builder.setDiskCache(new InternalCacheDiskCacheFactory(context, DISK_CACHE_SIZE));
+
+        // ExternalCacheDiskCacheFactory默认缓存路径：sdcard/Android/包名/cache/image_manager_disk_cache目录中
+        //builder.setDiskCache(new ExternalCacheDiskCacheFactory(context, DISK_CACHE_SIZE));
 
         //设置磁盘缓存到指定的目录，要使用DiskLruCacheFactory
         // or any other path
