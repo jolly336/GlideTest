@@ -27,7 +27,7 @@
 
 <center class="half">
     <img src="static/home.png" width="300"/>
-    <img src="hstatic/simpleusing.jpg" width="300"/>
+    <img src="static/simpleusing.jpg" width="300"/>
 </center>
 
 ## Discuss
