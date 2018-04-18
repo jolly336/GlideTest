@@ -25,10 +25,8 @@
 
 ## Screenshot
 
-<center class="half">
-    <img src="static/home.png" width="300"/>
-    <img src="static/simpleusing.jpg" width="300"/>
-</center>
+![Glide home](static/home.png)
+![Glide simpleusing](static/simpleusing.jpg)
 
 ## Discuss
 
