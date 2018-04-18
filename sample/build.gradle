@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+apply plugin: 'checkstyle'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.nelson.glidetest"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        renderscriptTargetApi 23
+        renderscriptSupportModeEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    dataBinding {
+        enabled true
+    }
+}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile "com.android.support:support-annotations:${rootProject.ext.supportLibVersion}"
+    compile "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    compile "com.android.support:recyclerview-v7:${rootProject.ext.supportLibVersion}"
+    compile "com.android.support:design:${rootProject.ext.supportLibVersion}"
+
+    compile "com.github.bumptech.glide:glide:${rootProject.ext.glide}"
+
+    compile "jp.wasabeef:glide-transformations:${rootProject.ext.glideTransformations}"
+    // If you want to use the GPU Filters
+    compile "jp.co.cyberagent.android.gpuimage:gpuimage-library:${rootProject.ext.gpuimageLibrary}"
+
+    // Glide's OkHttp Integration
+    //compile "com.github.bumptech.glide:okhttp3-integration:${rootProject.ext.okhttp3Integration}"
+    compile "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttp}"
+
+    // Glide's Volley Integration
+    //compile "com.github.bumptech.glide:volley-integration:${rootProject.ext.volleyIntegration}"
+    //compile "com.mcxiaoke.volley:library:${rootProject.ext.volley}"
+}
+
+task checkstyle(type: Checkstyle) {
+    description 'Runs Checkstyle inspection against GlideTest sourcesets.'
+    group = 'Code Quality'
+    configFile rootProject.file('checkstyle.xml')
+    ignoreFailures = false
+    showViolations true
+    classpath = files()
+    source 'src/main/java'
+}

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.nelson.glidetest">
+
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+  <application
+    android:allowBackup="true"
+    android:icon="@drawable/ic_launcher"
+    android:label="@string/app_name"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
+
+    <!-- Module实例：decode format：ARGB_8888 -->
+    <!--
+        <meta-data
+          android:name="com.nelson.glidetest.glidemodule.SimpleGlideModule"
+          android:value="GlideModule"/>
+    -->
+
+    <!-- Module实例：接受自签名证书的HTTPS（禁掉所有校验） -->
+    <!--
+        <meta-data
+          android:name="com.nelson.glidetest.glidemodule.UnsafeOkHttpGlideModule"
+          android:value="GlideModule"/>
+    -->
+
+    <!-- Module实例：接受自签名证书的HTTPS（校验证书，以12306.cn为例） -->
+    <!--
+        <meta-data
+          android:name="com.nelson.glidetest.glidemodule.SafeOkHttpGlideModule"
+          android:value="GlideModule"/>
+    -->
+
+    <!-- Module实例：自定义缓存 -->
+    <!--
+        <meta-data
+          android:name="com.nelson.glidetest.glidemodule.CustomCachingGlideModule"
+          android:value="GlideModule"/>
+    -->
+
+    <!-- Module实例：用自定义尺寸优化加载的图片(如果不在manifest中注册，需要给每个请求上使用.using(ModelLoader)来请求) -->
+    <!--
+        <meta-data
+          android:name="com.nelson.glidetest.glidemodule.CustomImageSizeGlideModule"
+          android:value="GlideModule"/>
+    -->
+
+    <!-- Module实例：替换原来HTTP通讯组件（实现带进度的Glide图片加载）-->
+    <meta-data
+      android:name="com.nelson.glidetest.network.okhttp.OkHttpGlideModule"
+      android:value="GlideModule"/>
+
+    <activity android:name="com.nelson.glidetest.MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+
+    <activity
+      android:name=".AboutActivity"
+      android:theme="@style/AboutTheme"/>
+
+    <activity android:name=".activity.SimpleUsinglActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.simpleusing"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.ImageListActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.imagelist"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.CrossFadeActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.crossfade"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.ResizeActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.resize"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.CacheActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.cache"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.PriorityActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.priority"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.ThumbnailActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.thumbnail"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.ViewTargetActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.viewtarget"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.NotificationTargetActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.notification"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.ExceptionActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.exception"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.TransformationActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.transformation"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.AnimateActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.animate"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.NetworkActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.network"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.HttpsActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.https"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.CustomImageSizeActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.customimagesize"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+    <activity android:name=".activity.LoadProgressActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.loadprogress"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+  </application>
+
+</manifest>
