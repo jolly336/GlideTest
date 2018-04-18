@@ -23,6 +23,13 @@
  * [loadprogress - 自定义带进度条加载图片](#loadprogress)
  * [Glide4.0 - 全面了解Glide4.0](#Glide4.0) work in progress
 
+## Screenshot
+
+<center class="half">
+    <img src="static/home.png" width="300"/>
+    <img src="hstatic/simpleusing.jpg" width="300"/>
+</center>
+
 ## Discuss
 
 Contact me: haoxunwang525@gmail.com
