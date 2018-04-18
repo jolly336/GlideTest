@@ -18,6 +18,13 @@
       android:gravity="center"
       android:orientation="vertical">
 
+      <TextView
+        android:id="@+id/iv_hint"
+        style="@style/imageview_style"
+        android:text="注意：self-signed 自签名 HTTPS认证，要使用此功能，需要在Manifest文件中注册安全SafeOkHttpGlideModule或者非安全UnsafeOkHttpGlideModule！！！"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14dp"/>
+
       <ImageView
         android:id="@+id/iv_unsafe"
         style="@style/imageview_style"

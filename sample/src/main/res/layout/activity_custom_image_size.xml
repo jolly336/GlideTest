@@ -18,6 +18,13 @@
       android:gravity="center"
       android:orientation="vertical">
 
+      <TextView
+        android:id="@+id/iv_hint"
+        style="@style/imageview_style"
+        android:text="注意：用自定义尺寸优化加载的图片，要使用此功能，需要在Manifest文件中注册CustomImageSizeGlideModule！！！"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14dp"/>
+
       <ImageView
         android:id="@+id/iv_customAll"
         style="@style/imageview_style"

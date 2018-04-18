@@ -26,15 +26,16 @@ public class ResourceConfig {
     public static final String IMAGE_HTTPS_URL = "https://travel.12306.cn/imgs/resources/uploadfiles/images/a9b9c76d-36ba-4e4a-8e02-9e6a1a991da0_news_W540_H300.jpg";
 
     public static final String[] IMAGE_REMOTE_URLS = {
-            "http://opkjcw4sd.bkt.clouddn.com/anthony-intraversato-257182.jpg",
-            "http://opkjcw4sd.bkt.clouddn.com/photo-1449034446853-66c86144b0ad.jpeg",
-            "http://opkjcw4sd.bkt.clouddn.com/brooke-lark-158017.jpg",
-            "http://opkjcw4sd.bkt.clouddn.com/brooke-lark-254998.jpg",
-            "http://opkjcw4sd.bkt.clouddn.com/christian-joudrey-96208.jpg",
-            "http://opkjcw4sd.bkt.clouddn.com/clement-h-544786.jpg",
-            "http://opkjcw4sd.bkt.clouddn.com/kevin-noble-524437.jpg",
-            "http://opkjcw4sd.bkt.clouddn.com/photo-1483168527879-c66136b56105.jpeg",
-            "http://opkjcw4sd.bkt.clouddn.com/photo-1484893341013-5f1d9c91a96e.jpeg",
+            "http://opkjcw4sd.bkt.clouddn.com/unsplash_01.jpeg",
+            "http://opkjcw4sd.bkt.clouddn.com/unsplash_02.jpeg",
+            "http://opkjcw4sd.bkt.clouddn.com/unsplash_03.jpeg",
+            "http://opkjcw4sd.bkt.clouddn.com/unsplash_04.jpeg",
+            "http://opkjcw4sd.bkt.clouddn.com/unsplash_05.jpeg",
+            "http://opkjcw4sd.bkt.clouddn.com/unsplash_06.jpeg",
+            "http://opkjcw4sd.bkt.clouddn.com/unsplash_07.jpeg",
+            "http://opkjcw4sd.bkt.clouddn.com/unsplash_08.jpeg",
+            "http://opkjcw4sd.bkt.clouddn.com/unsplash_09.jpeg",
+            "http://opkjcw4sd.bkt.clouddn.com/unsplash_10.jpeg",
     };
 
     private static Uri resourceIdToUri(Context context, int resourceId) {

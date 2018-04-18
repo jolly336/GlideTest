@@ -57,10 +57,10 @@ public class ImageListActivity extends BaseActivity {
                     .load(imageUrls[position])
                     .placeholder(R.drawable.placeholder)
                     .error(R.drawable.error)
-                    .skipMemoryCache(true) //禁止内存缓存
+                    //.skipMemoryCache(true) //禁止内存缓存
                     // 比如请求的图片是1000x1000像素，但你的ImageView是500x500像素
                     // 磁盘四个枚举值：ALL 所有版本图片，NONE 不缓存图片，SOURCE 仅仅只缓存原来全分辨率图片，RESULT 仅仅缓存最终的图片
-                    .diskCacheStrategy(DiskCacheStrategy.NONE)// 禁止磁盘缓存
+                    //.diskCacheStrategy(DiskCacheStrategy.NONE)// 禁止磁盘缓存
                     // 缩略图，先显示原图的10%的大小，等到原始图像到达后，会抹除缩略图，显示原始图片
                     .thumbnail(0.1f)
                     .into((ImageView) convertView);

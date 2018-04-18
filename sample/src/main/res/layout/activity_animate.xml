@@ -10,7 +10,7 @@
   <android.support.v4.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nelson.glidetest.activity.CacheActivity">
+    tools:context="com.nelson.glidetest.activity.AnimateActivity">
 
     <LinearLayout
       android:layout_width="match_parent"
