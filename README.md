@@ -28,6 +28,11 @@
 ![Glide home](static/home.png)
 ![Glide simpleusing](static/simpleusing.jpg)
 
+<p>
+<img src="static/home.png" width="49%"/>
+<img src="static/simpleusing.jpg" width="49%"/>
+</p>
+
 ## Discuss
 
 Contact me: haoxunwang525@gmail.com
