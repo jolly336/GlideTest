@@ -12,8 +12,10 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.request.target.Target;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityLoadProgressBinding;
@@ -88,6 +90,7 @@ public class LoadProgressActivity extends BaseActivity {
 
         Glide.with(this)
                 .load(URL)
+                .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .dontTransform()
                 //.override(ViewTarget.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
@@ -99,6 +102,13 @@ public class LoadProgressActivity extends BaseActivity {
                     public void onLoadStarted(Drawable placeholder) {
                         super.onLoadStarted(placeholder);
                         mProgressDialog.show();
+                    }
+
+                    @Override
+                    public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                        super.onLoadFailed(e, errorDrawable);
+                        mProgressDialog.dismiss();
+                        ProgressInterceptor.removeListener(URL);
                     }
 
                     @Override

@@ -38,7 +38,7 @@ public class ResourceConfig {
             "http://opkjcw4sd.bkt.clouddn.com/unsplash_10.jpeg",
     };
 
-    private static Uri resourceIdToUri(Context context, int resourceId) {
+    public static Uri resourceIdToUri(Context context, int resourceId) {
         return Uri.parse(ANDROID_RESOURCE + context.getPackageName() + FOREWARD_SLASH + resourceId);
     }
 

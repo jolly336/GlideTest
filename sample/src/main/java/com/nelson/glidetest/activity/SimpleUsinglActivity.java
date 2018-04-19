@@ -9,7 +9,6 @@ import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivitySimpleUsingBinding;
 import com.nelson.glidetest.model.ResourceConfig;
-import com.nelson.glidetest.utils.Util;
 import java.io.File;
 
 /**
@@ -86,7 +85,7 @@ public class SimpleUsinglActivity extends BaseActivity {
     }
 
     private void loadImageByUri() {
-        Uri uri = Util.resourceIdToUri(this, R.drawable.ballon);
+        Uri uri = ResourceConfig.resourceIdToUri(this, R.drawable.ballon);
         Glide.with(this)
                 .load(uri)
                 .placeholder(R.drawable.placeholder)
