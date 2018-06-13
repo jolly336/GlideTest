@@ -10,11 +10,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.widget.RemoteViews;
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.NotificationTarget;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 
 /**
  * 加载图片到通知栏和应用小部件中
@@ -65,13 +65,12 @@ public class NotificationTargetActivity extends BaseActivity {
         notificationManager.notify(ID_NOTIFICATION, notification);
 
         //build target provided by glide
-        NotificationTarget notificationTarget = new NotificationTarget(
-                this, rv, R.id.iv_notification_icon,
-                notification, ID_NOTIFICATION);
+        NotificationTarget notificationTarget = new NotificationTarget(this,
+                R.id.iv_notification_icon, rv, notification, ID_NOTIFICATION);
 
-        Glide.with(this)
-                .load(ResourceConfig.IMAGE_REMOTE_URLS[0])
+        GlideApp.with(this)
                 .asBitmap()
+                .load(ResourceConfig.IMAGE_REMOTE_URLS[0])
                 .into(notificationTarget);
     }
 

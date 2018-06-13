@@ -4,11 +4,11 @@ import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.Glide;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivitySimpleUsingBinding;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 import java.io.File;
 
 /**
@@ -49,7 +49,7 @@ public class SimpleUsinglActivity extends BaseActivity {
 
     private void loadImageByUrl() {
         String remoteUrl = ResourceConfig.IMAGE_REMOTE_URLS[0];
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(remoteUrl)
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -58,7 +58,7 @@ public class SimpleUsinglActivity extends BaseActivity {
 
 
     private void loadImageWithDrawableIdByResource() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(R.drawable.see)
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -66,7 +66,7 @@ public class SimpleUsinglActivity extends BaseActivity {
     }
 
     private void loadImageWithRawIdByResource() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(R.raw.francisco)
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -74,7 +74,7 @@ public class SimpleUsinglActivity extends BaseActivity {
     }
 
     private void loadImageByFile() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_LOCAL_PATH)
                 .placeholder(R.drawable.placeholder) // can also be a drawable
                 .error(R.drawable.error)            // will be displayed if the image cannot be loaded
@@ -86,7 +86,7 @@ public class SimpleUsinglActivity extends BaseActivity {
 
     private void loadImageByUri() {
         Uri uri = ResourceConfig.resourceIdToUri(this, R.drawable.ballon);
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(uri)
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -95,12 +95,12 @@ public class SimpleUsinglActivity extends BaseActivity {
 
     private void loadImageByGif() {
         String gifUrl = ResourceConfig.GIF_REMOTE_URL;
-        Glide.with(this)
-                .load(gifUrl)
+        GlideApp.with(this)
                 // Gif检查，如果提供的来源不是一个Gif，就没有办法显示，Glide接受Gif或者图片作为load()参数，如果你期望URL是一个Gif，Glide不会自动检查，
                 //引入了一个额外的防区强制Glide变成一个Gif,asGif()方法
 //                .asGif()
                 .asBitmap() //Gif转为Bitmap，仅仅显示Gif的第一帧图片，可调用asBitmap()去保证其作为一个常规的图片显示，即使这个URL是一个Gif
+                .load(gifUrl)
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
                 .into(mBinding.ivGif);
@@ -109,7 +109,7 @@ public class SimpleUsinglActivity extends BaseActivity {
 
     private void loadVideoByUri() {
         String videoPath = ResourceConfig.VIDEO_LOCAL_PATH;
-        Glide.with(this)
+        GlideApp.with(this)
                 // Glide只能加载存储在设备本地上的视频，如果是网络URL视频，Glide是不工作的，如果想显示远端视频，去看看VideoView
                 .load(Uri.fromFile(new File(videoPath)))
                 .placeholder(R.drawable.placeholder)

@@ -1,11 +1,12 @@
 package com.nelson.glidetest.network.okhttp;
 
-import android.content.Context;
-import com.bumptech.glide.load.data.DataFetcher;
-import com.bumptech.glide.load.model.GenericLoaderFactory;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.ModelLoader;
 import com.bumptech.glide.load.model.ModelLoaderFactory;
+import com.bumptech.glide.load.model.MultiModelLoaderFactory;
 import java.io.InputStream;
 import okhttp3.OkHttpClient;
 
@@ -17,6 +18,18 @@ public class OkHttpGlideUrlLoader implements ModelLoader<GlideUrl, InputStream> 
 
 
     private final OkHttpClient mOkHttpClient;
+
+    @Nullable
+    @Override
+    public LoadData<InputStream> buildLoadData(@NonNull GlideUrl model, int width, int height,
+            @NonNull Options options) {
+        return new LoadData<>(model, new OkHttpFetcher(mOkHttpClient, model));
+    }
+
+    @Override
+    public boolean handles(@NonNull GlideUrl glideUrl) {
+        return false;
+    }
 
     public static class Factory implements ModelLoaderFactory<GlideUrl, InputStream> {
 
@@ -37,9 +50,10 @@ public class OkHttpGlideUrlLoader implements ModelLoader<GlideUrl, InputStream> 
             return client;
         }
 
+        @NonNull
         @Override
-        public ModelLoader<GlideUrl, InputStream> build(Context context,
-                GenericLoaderFactory factories) {
+        public ModelLoader<GlideUrl, InputStream> build(
+                @NonNull MultiModelLoaderFactory multiFactory) {
             return new OkHttpGlideUrlLoader(getOkHttpClient());
         }
 
@@ -53,8 +67,4 @@ public class OkHttpGlideUrlLoader implements ModelLoader<GlideUrl, InputStream> 
         this.mOkHttpClient = client;
     }
 
-    @Override
-    public DataFetcher<InputStream> getResourceFetcher(GlideUrl model, int width, int height) {
-        return new OkHttpFetcher(mOkHttpClient, model);
-    }
 }

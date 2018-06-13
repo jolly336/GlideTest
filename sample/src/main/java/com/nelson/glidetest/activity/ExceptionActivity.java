@@ -1,16 +1,18 @@
 package com.nelson.glidetest.activity;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityExceptionBinding;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 
 /**
  * 异常：调试和错误处理
@@ -46,18 +48,18 @@ public class ExceptionActivity extends BaseActivity {
         showErrorListener();
     }
 
-    private RequestListener<String, GlideDrawable> requestListener = new RequestListener<String, GlideDrawable>() {
+    private RequestListener<Drawable> requestListener = new RequestListener<Drawable>() {
         @Override
-        public boolean onException(Exception e, String model, Target<GlideDrawable> target,
-                boolean isFirstResource) {
+        public boolean onLoadFailed(@Nullable GlideException e, Object model,
+                Target<Drawable> target, boolean isFirstResource) {
             //  todo log exception 打Log
             // important to return false so the error placeholder can be placed.
             return false;
         }
 
         @Override
-        public boolean onResourceReady(GlideDrawable resource, String model,
-                Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target,
+                DataSource dataSource, boolean isFirstResource) {
             return false;
         }
     };
@@ -66,7 +68,7 @@ public class ExceptionActivity extends BaseActivity {
      * 常规异常日志记录
      */
     private void showErrorListener() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[7])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)

@@ -1,6 +1,5 @@
 package com.nelson.glidetest.transformation;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapShader;
@@ -8,8 +7,11 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Shader.TileMode;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
 
 /**
  * Created by Nelson on 2018/1/22.
@@ -17,9 +19,8 @@ import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 
 public class CircleCropTransformation extends BitmapTransformation {
 
-    public CircleCropTransformation(Context context) {
-        super(context);
-    }
+    private static final String ID = "com.nelson.glidetest.transformation.CircleCropTransformation";
+    private static final byte[] ID_BYTES = ID.getBytes(Charset.forName("UTF-8"));
 
     @Override
     protected Bitmap transform(BitmapPool pool, Bitmap toTransform, int outWidth, int outHeight) {
@@ -47,15 +48,18 @@ public class CircleCropTransformation extends BitmapTransformation {
         paint.setAntiAlias(true);
         float radius = diameter / 2f;
         canvas.drawCircle(radius, radius, radius, paint);
-        if (toReuse != null && !pool.put(toReuse)) {
+
+        if (!toReuse.equals(toTransform)) {
             toReuse.recycle();
+            pool.put(toTransform);
         }
 
         return result;
     }
 
     @Override
-    public String getId() {
-        return "com.nelson.glidetest.transformation.CircleCropTransformation";
+    public void updateDiskCacheKey(@NonNull MessageDigest messageDigest) {
+        // 描述了这个转换的唯一标识符，Glide使用该键作为缓存系统的一部分，为了避免意外的问题，你需要确保它是唯一的！！！
+        messageDigest.update(ID_BYTES);
     }
 }

@@ -3,11 +3,12 @@ package com.nelson.glidetest.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityCrossFadeBinding;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 
 /**
  * Created by Nelson on 2018/4/13.
@@ -34,7 +35,7 @@ public class CrossFadeActivity extends BaseActivity {
     }
 
     private void showPlaceHolder() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[1])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -42,18 +43,18 @@ public class CrossFadeActivity extends BaseActivity {
     }
 
     private void showCrossFade() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[1])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
-                //.crossFade()
-                .crossFade(500)
+                //.transition(DrawableTransitionOptions.withCrossFade())
+                .transition(DrawableTransitionOptions.withCrossFade(500))
                 .into(mBinding.ivCrossfade);
     }
 
 
     private void showAnimate() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[1])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)

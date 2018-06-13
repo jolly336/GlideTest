@@ -1,15 +1,17 @@
 package com.nelson.glidetest.activity;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityThumbnailBinding;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 
 /**
  * Two ways to load image with thumbnail
@@ -41,7 +43,7 @@ public class ThumbnailActivity extends BaseActivity {
      * 缩略图，先显示原图的10%的大小，等到原始图像到达后，会抹除缩略图，显示原始图片
      */
     private void showSizeMultiplier() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[5])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -55,11 +57,11 @@ public class ThumbnailActivity extends BaseActivity {
      */
     private void showThumbnailRequest() {
         // setup Glide request without the into() method
-        DrawableTypeRequest<String> thumbnailRequest = Glide.with(this)
+        RequestBuilder<Drawable> thumbnailRequest = Glide.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[4]);
 
         // pass the request as a parameter to the thumbnail request
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[5])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)

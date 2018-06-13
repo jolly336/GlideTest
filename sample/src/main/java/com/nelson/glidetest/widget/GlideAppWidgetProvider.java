@@ -5,10 +5,11 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.widget.RemoteViews;
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.AppWidgetTarget;
+import com.bumptech.glide.request.target.Target;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 
 /**
  * App Widgets
@@ -23,11 +24,14 @@ public class GlideAppWidgetProvider extends AppWidgetProvider {
         RemoteViews rv = new RemoteViews(context.getPackageName(),
                 R.layout.notification_remoteview);
 
-        AppWidgetTarget appWidgetTarget = new AppWidgetTarget(context, rv,
-                R.id.iv_notification_icon, appWidgetIds);
-        Glide.with(context)
-                .load(ResourceConfig.IMAGE_REMOTE_URLS[0])
+        AppWidgetTarget appWidgetTarget = new AppWidgetTarget(context, Target.SIZE_ORIGINAL,
+                Target.SIZE_ORIGINAL,
+                R.layout.notification_remoteview, rv,
+                appWidgetIds);
+
+        GlideApp.with(context)
                 .asBitmap()
+                .load(ResourceConfig.IMAGE_REMOTE_URLS[0])
                 .into(appWidgetTarget);
 
         pushWidgetUpdate(context, rv);

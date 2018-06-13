@@ -3,12 +3,12 @@ package com.nelson.glidetest.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityResizeBinding;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 
 /**
  * Created by Nelson on 2018/4/13.
@@ -35,7 +35,7 @@ public class ResizeActivity extends BaseActivity {
     }
 
     private void showOverride() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[2])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -47,7 +47,7 @@ public class ResizeActivity extends BaseActivity {
     }
 
     private void showCenterCrop() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[2])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -57,7 +57,7 @@ public class ResizeActivity extends BaseActivity {
     }
 
     private void showFitCenter() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[2])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)

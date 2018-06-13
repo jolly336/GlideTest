@@ -4,22 +4,20 @@ import android.app.ProgressDialog;
 import android.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
-import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.request.target.DrawableImageViewTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityLoadProgressBinding;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 import com.nelson.glidetest.network.okhttp.ProgressInterceptor;
 import com.nelson.glidetest.network.okhttp.ProgressListener;
 
@@ -88,7 +86,7 @@ public class LoadProgressActivity extends BaseActivity {
             }
         });
 
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(URL)
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -97,24 +95,24 @@ public class LoadProgressActivity extends BaseActivity {
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.net_error_img)
                 //into(mBinding.ivImage);
-                .into(new GlideDrawableImageViewTarget(mBinding.ivImage) {
+                .into(new DrawableImageViewTarget(mBinding.ivImage) {
                     @Override
-                    public void onLoadStarted(Drawable placeholder) {
+                    public void onLoadStarted(@Nullable Drawable placeholder) {
                         super.onLoadStarted(placeholder);
                         mProgressDialog.show();
                     }
 
                     @Override
-                    public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                        super.onLoadFailed(e, errorDrawable);
+                    public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                        super.onLoadFailed(errorDrawable);
                         mProgressDialog.dismiss();
                         ProgressInterceptor.removeListener(URL);
                     }
 
                     @Override
-                    public void onResourceReady(GlideDrawable resource,
-                            GlideAnimation<? super GlideDrawable> animation) {
-                        super.onResourceReady(resource, animation);
+                    public void onResourceReady(@NonNull Drawable resource,
+                            @Nullable Transition<? super Drawable> transition) {
+                        super.onResourceReady(resource, transition);
                         mProgressDialog.dismiss();
                         ProgressInterceptor.removeListener(URL);
                     }

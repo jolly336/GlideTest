@@ -3,11 +3,11 @@ package com.nelson.glidetest.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.Glide;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityTransformationBinding;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 import com.nelson.glidetest.transformation.BlurTransformation;
 import com.nelson.glidetest.transformation.RotateTransformation;
 
@@ -41,7 +41,7 @@ public class TransformationActivity extends BaseActivity {
     }
 
     private void showBlurTransformation() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[8])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -55,12 +55,12 @@ public class TransformationActivity extends BaseActivity {
      * 运用多种转换，提示：当你使用了转换后你就不能使用.centerCrop()或.fitCenter()了！！！
      */
     private void showMultiTransformation() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[8])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
                 // 确保只调用了一次.transform()或.bitmapTransform()，否则，之前的配置就会被覆盖掉的！
-                .transform(new BlurTransformation(this), new RotateTransformation(this))
+                .transforms(new BlurTransformation(this), new RotateTransformation())
                 .into(mBinding.ivMulti);
 
     }
@@ -69,12 +69,11 @@ public class TransformationActivity extends BaseActivity {
      * 使用glide-transformations库来做转换
      */
     private void showThirdTransformation() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[8])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
-                .bitmapTransform(
-                        new jp.wasabeef.glide.transformations.BlurTransformation(this, 25, 2))
+                .transform(new jp.wasabeef.glide.transformations.BlurTransformation(this, 25, 2))
                 .into(mBinding.ivThird);
     }
 

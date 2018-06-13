@@ -3,14 +3,13 @@ package com.nelson.glidetest.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.Glide;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityCustomImageSizeBinding;
 import com.nelson.glidetest.glidemodule.CustomImageSizeModel;
 import com.nelson.glidetest.glidemodule.CustomImageSizeModelFuture;
-import com.nelson.glidetest.glidemodule.CustomImageSizeUrlLoader;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 
 /**
  * 用自定义尺寸优化加载的图片(创建一个新的接口，来考虑增加宽度和高度)
@@ -41,7 +40,7 @@ public class CustomImageSizeActivity extends BaseActivity {
         String baseImageUrl = ResourceConfig.IMAGE_HTTPS_URL;
         CustomImageSizeModel customImageRequest = new CustomImageSizeModelFuture(baseImageUrl);
 
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(customImageRequest)
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -50,13 +49,19 @@ public class CustomImageSizeActivity extends BaseActivity {
 
     /**
      * 动态使用ModelLoader
+     *
+     * The using() API was removed in Glide 4 to encourage users to register their components once with a AppGlideModule to avoid object re-use.
+     * Rather than creating a new ModelLoader each time you load an image, you register it once in an AppGlideModule
+     * and let Glide inspect your model (the object you pass to load()) to figure out when to use your registered ModelLoader.
+     *
+     * To make sure you only use your ModelLoader for certain models, implement handles() as shown above to inspect each model and return true only if your ModelLoader should be used.
      */
     private void showCustomImageSizeUsingSingleRequest() {
         String baseImageUrl = ResourceConfig.IMAGE_HTTPS_URL;
         CustomImageSizeModel customImageRequest = new CustomImageSizeModelFuture(baseImageUrl);
 
-        Glide.with(this)
-                .using(new CustomImageSizeUrlLoader(this))
+        GlideApp.with(this)
+                //.using(new CustomImageSizeUrlLoader(this))
                 .load(customImageRequest)
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)

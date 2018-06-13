@@ -1,11 +1,12 @@
 package com.nelson.glidetest.activity;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.nelson.glidetest.BaseActivity;
@@ -13,6 +14,7 @@ import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityHttpsBinding;
 import com.nelson.glidetest.model.ResourceConfig;
 import com.nelson.glidetest.network.SafeOkHttpClient;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 import java.io.IOException;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -49,7 +51,7 @@ public class HttpsActivity extends BaseActivity {
     }
 
     private void showUnsafe() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_HTTPS_URL)  // Https image hreflink
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -57,23 +59,23 @@ public class HttpsActivity extends BaseActivity {
     }
 
     private void showSafe() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_HTTPS_URL)  // Https image hreflink
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
-                .listener(new RequestListener<String, GlideDrawable>() {
+                .listener(new RequestListener<Drawable>() {
                     @Override
-                    public boolean onException(Exception e, String model,
-                            Target<GlideDrawable> target,
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model,
+                            Target<Drawable> target,
                             boolean isFirstResource) {
                         Log.e(TAG, "#onException() :" + e.toString());
                         return false;
                     }
 
                     @Override
-                    public boolean onResourceReady(GlideDrawable resource, String model,
-                            Target<GlideDrawable> target, boolean isFromMemoryCache,
-                            boolean isFirstResource) {
+                    public boolean onResourceReady(Drawable resource, Object model,
+                            Target<Drawable> target,
+                            DataSource dataSource, boolean isFirstResource) {
                         return false;
                     }
                 })
