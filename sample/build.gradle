@@ -59,6 +59,17 @@ dependencies {
     //compile "com.mcxiaoke.volley:library:${rootProject.ext.volley}"
 }
 
+configurations.all {
+    resolutionStrategy {
+        eachDependency { details ->
+            // Force all of the primary support libraries to use the same version.
+            if (details.requested.group == 'com.android.support') {
+                details.useVersion rootProject.ext.supportLibVersion
+            }
+        }
+    }
+}
+
 task checkstyle(type: Checkstyle) {
     description 'Runs Checkstyle inspection against GlideTest sourcesets.'
     group = 'Code Quality'
