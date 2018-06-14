@@ -194,6 +194,15 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".activity.Glide4Activity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.glide4"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
+
   </application>
 
 </manifest>
