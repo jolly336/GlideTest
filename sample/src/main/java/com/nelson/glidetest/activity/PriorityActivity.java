@@ -3,12 +3,12 @@ package com.nelson.glidetest.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityPriorityBinding;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 
 /**
  * {@link Priority} Priorities for completing loads.If more than one load is queued at a time,the
@@ -37,7 +37,7 @@ public class PriorityActivity extends BaseActivity {
     }
 
     private void showLowPriority() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[4])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -46,7 +46,7 @@ public class PriorityActivity extends BaseActivity {
     }
 
     private void showNormalPriority() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[4])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -55,7 +55,7 @@ public class PriorityActivity extends BaseActivity {
     }
 
     private void showHighPriority() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[4])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -65,7 +65,7 @@ public class PriorityActivity extends BaseActivity {
 
 
     private void showImmediatePriority() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[4])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)

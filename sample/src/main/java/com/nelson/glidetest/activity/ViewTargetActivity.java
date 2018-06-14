@@ -2,17 +2,18 @@ package com.nelson.glidetest.activity;
 
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.ViewTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityViewtargetBinding;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 import com.nelson.glidetest.view.CustomTargetView;
 
 /**
@@ -42,8 +43,8 @@ public class ViewTargetActivity extends BaseActivity {
     // [注意：]确保你所声明的回调对象是作为一个字段对象的，这样就可以保护它被邪恶的Android垃圾回收机制回收；（Android垃圾回收移除了匿名内部类对象）
     private SimpleTarget<Bitmap> target = new SimpleTarget<Bitmap>() {
         @Override
-        public void onResourceReady(Bitmap resource,
-                GlideAnimation<? super Bitmap> glideAnimation) {
+        public void onResourceReady(@NonNull Bitmap resource,
+                @Nullable Transition<? super Bitmap> transition) {
             mBinding.ivSimpleTarget.setImageBitmap(resource);
         }
     };
@@ -53,10 +54,10 @@ public class ViewTargetActivity extends BaseActivity {
      */
     private void showSimpleTarget() {
 
-        Glide.with(this)
+        GlideApp.with(this)
+                .asBitmap()
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[6])
                 // 强制Glide返回一个Bitmap对象
-                .asBitmap()
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
                 .into(target);
@@ -69,16 +70,16 @@ public class ViewTargetActivity extends BaseActivity {
         // 注意：可在target构造参数里加强宽高，可在回调中声明指定它以节省内存和时间
         SimpleTarget<Bitmap> target = new SimpleTarget<Bitmap>(100, 100) {
             @Override
-            public void onResourceReady(Bitmap resource,
-                    GlideAnimation<? super Bitmap> glideAnimation) {
+            public void onResourceReady(@NonNull Bitmap resource,
+                    @Nullable Transition<? super Bitmap> transition) {
                 mBinding.ivSimpleTargetWithSize.setImageBitmap(resource);
             }
         };
 
-        Glide.with(this.getApplicationContext()) // 生命周期之外的请求，使用application context，safer!!!
+        GlideApp.with(this.getApplicationContext()) // 生命周期之外的请求，使用application context，safer!!!
+                .asBitmap()
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[6])
                 // 强制Glide返回一个Bitmap对象
-                .asBitmap()
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
                 .into(target);
@@ -89,17 +90,17 @@ public class ViewTargetActivity extends BaseActivity {
      */
     private void showCustomViewTarget() {
 
-        ViewTarget<CustomTargetView, GlideDrawable> target = new ViewTarget<CustomTargetView, GlideDrawable>(
+        ViewTarget<CustomTargetView, Drawable> target = new ViewTarget<CustomTargetView, Drawable>(
                 mBinding.ivCustomTargetView) {
             @Override
-            public void onResourceReady(GlideDrawable resource,
-                    GlideAnimation<? super GlideDrawable> glideAnimation) {
+            public void onResourceReady(@NonNull Drawable resource,
+                    @Nullable Transition<? super Drawable> transition) {
                 // 你也可以在回调中添加额外的工作，如，我们可以分析传入的Bitmap的主要颜色并设置十六进制值给TextView，我相信你应该已经有一些想法了。
                 mBinding.ivCustomTargetView.setImageAsBackground(resource);
             }
         };
 
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[6])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)

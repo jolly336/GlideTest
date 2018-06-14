@@ -1,10 +1,13 @@
 package com.nelson.glidetest.glidemodule;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.Registry;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.module.GlideModule;
+import com.bumptech.glide.request.RequestOptions;
 
 /**
  * 创建一个额外的类去定制 Glide。下一步是要全局的去声明这个类，让 Glide 知道它应该在哪里被加载和使用。
@@ -22,11 +25,12 @@ public class SimpleGlideModule implements GlideModule {
     @Override
     public void applyOptions(Context context, GlideBuilder builder) {
 
-        builder.setDecodeFormat(DecodeFormat.PREFER_ARGB_8888);
+        builder.setDefaultRequestOptions(new RequestOptions().format(DecodeFormat.PREFER_ARGB_8888));
     }
 
     @Override
-    public void registerComponents(Context context, Glide glide) {
+    public void registerComponents(@NonNull Context context, @NonNull Glide glide,
+            @NonNull Registry registry) {
         // nothing to do here
     }
 }

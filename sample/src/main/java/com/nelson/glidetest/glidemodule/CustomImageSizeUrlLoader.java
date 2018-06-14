@@ -1,19 +1,25 @@
 package com.nelson.glidetest.glidemodule;
 
-import android.content.Context;
+import android.support.annotation.NonNull;
+import com.bumptech.glide.load.Options;
+import com.bumptech.glide.load.model.GlideUrl;
+import com.bumptech.glide.load.model.ModelLoader;
 import com.bumptech.glide.load.model.stream.BaseGlideUrlLoader;
+import java.io.InputStream;
 
 /**
  * Created by Nelson on 16/12/19.
  */
 public class CustomImageSizeUrlLoader extends BaseGlideUrlLoader<CustomImageSizeModel> {
 
-    public CustomImageSizeUrlLoader(Context context) {
-        super(context);
+
+    protected CustomImageSizeUrlLoader(ModelLoader<GlideUrl, InputStream> concreteLoader) {
+        super(concreteLoader);
     }
 
     @Override
-    protected String getUrl(CustomImageSizeModel model, int width, int height) {
+    protected String getUrl(CustomImageSizeModel model, int width, int height,
+            Options options) {
         // previous way: we directly accessed the images
         // https://futurestud.io/images/logo.png
 
@@ -23,4 +29,8 @@ public class CustomImageSizeUrlLoader extends BaseGlideUrlLoader<CustomImageSize
         return model.requestCustomSizeUrl(width, height);
     }
 
+    @Override
+    public boolean handles(@NonNull CustomImageSizeModel customImageSizeModel) {
+        return true;
+    }
 }

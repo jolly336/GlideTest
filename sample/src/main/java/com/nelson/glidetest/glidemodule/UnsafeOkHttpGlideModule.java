@@ -1,8 +1,10 @@
 package com.nelson.glidetest.glidemodule;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.Registry;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.module.GlideModule;
 import com.nelson.glidetest.network.UnsafeOkHttpUrlLoader;
@@ -23,7 +25,8 @@ public class UnsafeOkHttpGlideModule implements GlideModule {
     }
 
     @Override
-    public void registerComponents(Context context, Glide glide) {
+    public void registerComponents(@NonNull Context context, @NonNull Glide glide,
+            @NonNull Registry registry) {
 
         /**
          * registerComponents()去设置不同的网络库
@@ -39,6 +42,6 @@ public class UnsafeOkHttpGlideModule implements GlideModule {
          * 2.通过GlideUrl类来代表一个InputStream;
          * 3.Glide要能创建一新的ModelLoader，需要在.register()方法中传递一个工厂;
          */
-        glide.register(GlideUrl.class, InputStream.class, new UnsafeOkHttpUrlLoader.Factory());
+        registry.replace(GlideUrl.class, InputStream.class, new UnsafeOkHttpUrlLoader.Factory());
     }
 }

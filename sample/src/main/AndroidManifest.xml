@@ -49,9 +49,10 @@
     -->
 
     <!-- Module实例：替换原来HTTP通讯组件（实现带进度的Glide图片加载）-->
-    <meta-data
+    <!-- Glide4.0+开始，使用注解来解决清单文件注册问题 -->
+    <!--<meta-data
       android:name="com.nelson.glidetest.network.okhttp.OkHttpGlideModule"
-      android:value="GlideModule"/>
+      android:value="GlideModule"/>-->
 
     <activity android:name="com.nelson.glidetest.MainActivity">
       <intent-filter>
@@ -192,6 +193,15 @@
         <category android:name="android.intent.category.DEFAULT"/>
       </intent-filter>
     </activity>
+
+    <activity android:name=".activity.Glide4Activity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.glide4"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
 
   </application>
 

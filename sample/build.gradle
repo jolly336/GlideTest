@@ -39,7 +39,12 @@ dependencies {
     compile "com.android.support:recyclerview-v7:${rootProject.ext.supportLibVersion}"
     compile "com.android.support:design:${rootProject.ext.supportLibVersion}"
 
-    compile "com.github.bumptech.glide:glide:${rootProject.ext.glide}"
+    // Glide 3.7
+    //compile "com.github.bumptech.glide:glide:${rootProject.ext.glide}"
+
+    // Glide 4.7.1
+    implementation "com.github.bumptech.glide:glide:${rootProject.ext.glide4}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${rootProject.ext.glide4}"
 
     compile "jp.wasabeef:glide-transformations:${rootProject.ext.glideTransformations}"
     // If you want to use the GPU Filters
@@ -52,6 +57,17 @@ dependencies {
     // Glide's Volley Integration
     //compile "com.github.bumptech.glide:volley-integration:${rootProject.ext.volleyIntegration}"
     //compile "com.mcxiaoke.volley:library:${rootProject.ext.volley}"
+}
+
+configurations.all {
+    resolutionStrategy {
+        eachDependency { details ->
+            // Force all of the primary support libraries to use the same version.
+            if (details.requested.group == 'com.android.support') {
+                details.useVersion rootProject.ext.supportLibVersion
+            }
+        }
+    }
 }
 
 task checkstyle(type: Checkstyle) {

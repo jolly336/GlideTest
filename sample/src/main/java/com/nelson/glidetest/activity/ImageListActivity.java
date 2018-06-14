@@ -8,12 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityImageListAdapterBinding;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 
 /**
  * ListAdapter(ListView)
@@ -53,7 +52,7 @@ public class ImageListActivity extends BaseActivity {
                         .inflate(R.layout.item_image_list_adapter, parent, false);
             }
 
-            Glide.with(context)
+            GlideApp.with(context)
                     .load(imageUrls[position])
                     .placeholder(R.drawable.placeholder)
                     .error(R.drawable.error)

@@ -3,13 +3,13 @@ package com.nelson.glidetest.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityCacheBinding;
 import com.nelson.glidetest.glidemodule.CustomCachingGlideModule;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 
 /**
  * Showing memory,disk,and other custom defined cache size or directory
@@ -36,7 +36,7 @@ public class CacheActivity extends BaseActivity {
     }
 
     private void showMemoryCache() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[3])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
@@ -45,7 +45,7 @@ public class CacheActivity extends BaseActivity {
     }
 
     private void showDiskCache() {
-        Glide.with(this)
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[3])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)

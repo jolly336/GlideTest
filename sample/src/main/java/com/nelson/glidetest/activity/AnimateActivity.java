@@ -1,19 +1,21 @@
 package com.nelson.glidetest.activity;
 
-import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.animation.ViewPropertyAnimation;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.transition.ViewPropertyTransition;
+import com.bumptech.glide.request.transition.ViewPropertyTransition.Animator;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
 import com.nelson.glidetest.databinding.ActivityAnimateBinding;
 import com.nelson.glidetest.model.ResourceConfig;
+import com.nelson.glidetest.network.okhttp.GlideApp;
 
 /**
  * 用Animate()自定义动画
@@ -43,11 +45,15 @@ public class AnimateActivity extends BaseActivity {
      * 从左滑入
      */
     private void showTranslate() {
-        Glide.with(this)
+
+        DrawableTransitionOptions transitionOptions = new DrawableTransitionOptions();
+        transitionOptions.transition(R.anim.anim_slide_in_left);
+
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[0])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
-                .animate(R.anim.anim_slide_in_left)
+                .transition(transitionOptions)
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .into(mBinding.ivTranslate);
@@ -57,17 +63,23 @@ public class AnimateActivity extends BaseActivity {
      * 缩放动画
      */
     private void showScale() {
-        Glide.with(this)
+
+        BitmapTransitionOptions transitionOptions = new BitmapTransitionOptions();
+        transitionOptions.transition(R.anim.anim_zoom_in);
+
+        GlideApp.with(this)
+                .asBitmap()
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[0])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
-                .animate(R.anim.anim_zoom_in)
+                .transition(transitionOptions)
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .into(mBinding.ivTranslate);
+
     }
 
-    private ViewPropertyAnimation.Animator animator = new ViewPropertyAnimation.Animator() {
+    private ViewPropertyTransition.Animator animator = new Animator() {
         @Override
         public void animate(final View view) {
             // 这个视图对象是整个target视图，如果他是一个自定义的视图，你要找到你的视图的子元素，并且做些必要的动画。
@@ -96,11 +108,15 @@ public class AnimateActivity extends BaseActivity {
     };
 
     private void showAnimateOnCustomView() {
-        Glide.with(this)
+
+        DrawableTransitionOptions transitionOptions = new DrawableTransitionOptions();
+        transitionOptions.transition(animator);
+
+        GlideApp.with(this)
                 .load(ResourceConfig.IMAGE_REMOTE_URLS[0])
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.error)
-                .animate(animator)
+                .transition(transitionOptions)
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .into(mBinding.ivCustom);
