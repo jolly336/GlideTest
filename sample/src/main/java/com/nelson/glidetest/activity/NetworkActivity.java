@@ -3,8 +3,10 @@ package com.nelson.glidetest.activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import com.nelson.glidetest.BaseActivity;
 import com.nelson.glidetest.R;
+import com.nelson.glidetest.databinding.ActivityNetworkBinding;
 
 /**
  * 集成网络栈
@@ -26,6 +28,8 @@ public class NetworkActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Network");
-        DataBindingUtil.setContentView(this, R.layout.activity_network);
+        ActivityNetworkBinding binding = DataBindingUtil
+                .setContentView(this, R.layout.activity_network);
+        binding.tvWarning.setText(Html.fromHtml(getString(R.string.network_warning)));
     }
 }

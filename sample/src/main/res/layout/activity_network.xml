@@ -19,9 +19,15 @@
       android:orientation="vertical">
 
       <TextView
+        android:id="@+id/tv_warning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+      <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Glide为2个网络库提供了实现：Volley和OkHttp，2者只需要在module的build.gradle文件中添加依赖即可，Gradle会自动合并必要的GlideModule到你的Android.Manifest，Glide会认可在manifest中的存在，然后使用OkHttp做到所有的网络连接。"/>
+        android:text="Glide 4.0以后使用@GlideModule注解来标识自定义AppGlideModule，不再需要在清单文件中注册，由编译时注解处理器处理"
+        android:textColor="#ff0000"/>
 
     </LinearLayout>
 

@@ -19,6 +19,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setTitle("GlideTest for v4.7.1");
+
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         mBinding.recyclerView.setHasFixedSize(true);

@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">GlideTest</string>
+  <string name="app_name">GlideTest</string>
+
+  <string name="network_warning"><![CDATA[<font color="#585858"><u>Glide为2个网络库提供了实现：Volley和OkHttp，2者只需要在module的build.gradle文件中添加依赖即可，Gradle会自动合并必要的GlideModule到你的Android.Manifest，Glide会认可在manifest中的存在，然后使用OkHttp做到所有的网络连接。</u></font>]]></string>
 </resources>
