@@ -38,6 +38,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Bindin
             "https",
             "customimagesize",
             "loadprogress",
+            "download",
             "glide4",
     };
 

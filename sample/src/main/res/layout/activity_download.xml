@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+
+  </data>
+
+  <android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.nelson.glidetest.activity.CacheActivity">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:gravity="center"
+      android:orientation="vertical">
+
+      <Button
+        android:id="@+id/btn_download_file"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="download file"
+        android:textAllCaps="false"/>
+
+      <Button
+        android:id="@+id/btn_download_bitmap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="download bitmap"
+        android:textAllCaps="false"/>
+
+      <ImageView
+        android:id="@+id/iv_download"
+        style="@style/imageview_style"
+        tools:src="@drawable/ic_launcher"/>
+
+      <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+  </android.support.v4.widget.NestedScrollView>
+</layout>

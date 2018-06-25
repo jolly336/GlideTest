@@ -194,6 +194,14 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".activity.DownloadActivity">
+      <intent-filter>
+        <action android:name="com.nelson.glidetest.download"/>
+
+        <category android:name="android.intent.category.DEFAULT"/>
+      </intent-filter>
+    </activity>
+
     <activity android:name=".activity.Glide4Activity">
       <intent-filter>
         <action android:name="com.nelson.glidetest.glide4"/>
