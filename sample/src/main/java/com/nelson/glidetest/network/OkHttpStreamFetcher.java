@@ -8,76 +8,102 @@ import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.util.ContentLengthInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 import java.util.Map;
+import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Request.Builder;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**
+ * Fetches an {@link InputStream} using the okhttp.
  * 需要用我们的不安全的OkHttpClient去连接URL激活输入流，因此，我们需要另外一个类去从一个URL中拉取返回的输入流
  *
  * Created by Nelson on 16/12/19.
  */
-public class OkHttpStreamFetcher implements DataFetcher<InputStream> {
+public class OkHttpStreamFetcher implements DataFetcher<InputStream>, okhttp3.Callback {
 
-    private OkHttpClient client;
-    private GlideUrl url;
-    private InputStream stream;
-    private ResponseBody responseBody;
+    private static final String FAILED_FORMAT = "Request failed with url : %1$s , code: %2$d";
+
+    private final OkHttpClient mClient;
+    private final GlideUrl mUrl;
+    private ResponseBody mResponseBody;
+    private InputStream mStream;
+    private DataCallback<? super InputStream> mCallback;
+    private long mStartTime;
+    // call may be accessed on the main thread while the object is in use on other threads. All other
+    // accesses to variables may occur on different threads, but only one at a time.
+    private volatile Call mCall;
 
     public OkHttpStreamFetcher(OkHttpClient client, GlideUrl url) {
-        this.client = client;
-        this.url = url;
+        this.mClient = client;
+        this.mUrl = url;
     }
 
     @Override
     public void loadData(@NonNull Priority priority,
             @NonNull DataCallback<? super InputStream> callback) {
-        Request.Builder requestBuilder = new Request.Builder()
-                .url(url.toStringUrl());
 
-        for (Map.Entry<String, String> headerEntry : url.getHeaders().entrySet()) {
-            String key = headerEntry.getKey();
-            requestBuilder.addHeader(key, headerEntry.getValue());
+        Builder requestbuilder = new Builder().url(this.mUrl.toStringUrl());
+
+        for (Map.Entry<String, String> headerEntity : this.mUrl.getHeaders().entrySet()) {
+            String key = headerEntity.getKey();
+            requestbuilder.addHeader(key, headerEntity.getValue());
         }
 
-        Request request = requestBuilder.build();
+        this.mCallback = callback;
 
-        try {
-            Response response = client.newCall(request).execute();
-            responseBody = response.body();
-            if (!response.isSuccessful()) {
-                throw new IOException("Request failed with code: " + response.code());
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        Request request = requestbuilder.build();
+        this.mCall = this.mClient.newCall(request);
+        this.mCall.enqueue(this);
+    }
+
+    @Override
+    public void onFailure(Call call, IOException e) {
+        this.mCallback.onLoadFailed(e);
+    }
+
+    @Override
+    public void onResponse(Call call, Response response) throws IOException {
+        this.mResponseBody = response.body();
+        if (!response.isSuccessful()) {
+            this.mCallback.onLoadFailed(new IOException(
+                    String.format(Locale.US, FAILED_FORMAT, this.mUrl, response.code())));
+
+        } else {
+            long contentLength = this.mResponseBody.contentLength();
+            this.mStream = ContentLengthInputStream
+                    .obtain(this.mResponseBody.byteStream(), contentLength);
+            this.mCallback.onDataReady(mStream);
         }
-
-        long contentLength = responseBody.contentLength();
-        stream = ContentLengthInputStream.obtain(responseBody.byteStream(), contentLength);
-        callback.onDataReady(stream);
     }
 
     @Override
     public void cleanup() {
-        if (stream != null) {
+
+        if (this.mStream != null) {
             try {
-                stream.close();
+                this.mStream.close();
             } catch (IOException e) {
                 // Ignored
             }
         }
 
-        if (responseBody != null) {
-            responseBody.close();
+        if (this.mResponseBody != null) {
+            this.mResponseBody.close();
         }
 
+        this.mCallback = null;
     }
 
     @Override
     public void cancel() {
-        // TODO: 16/12/19 call cancel on the client when this method is called on a background thread. See #257
+        Call local = this.mCall;
+        if (local != null) {
+            local.cancel();
+        }
     }
 
     @NonNull
