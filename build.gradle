@@ -3,9 +3,11 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        //jcenter()
         //Glide
-        mavenCentral() // jcenter() works as well because it pulls from Maven Central
+        //mavenCentral() // jcenter() works as well because it pulls from Maven Central
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0'
@@ -18,7 +20,9 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        //jcenter()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
     }
 }
 
